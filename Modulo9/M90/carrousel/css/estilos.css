@@ -1,1 +1,64 @@
+body {   
+   margin: auto;
+   font-family: 'Open Sans';
+   /*background-color: lemonchiffon;*/
+}
 
+header {
+   position: fixed; 
+   top: 0;
+   width: 100%;
+   background-color: #fff; 
+   padding-top: 0.10em;
+}
+
+#menu p{text-align: center; margin: 0; padding: 0 0 0.5em 0;}
+
+.btn_menu {
+   margin-left: 1em;
+   padding-left: 1em;
+   padding-right: 1em;
+   min-width: 10em;
+   height: 2.5em;
+   font-family: Tahoma, Verdana, Geneva, sans-serif;
+   font-size: 75%;
+   background-color:#fff;
+   color: deeppink;
+   cursor: pointer;
+   border: solid 1px; 
+}
+h1 {font-weight: lighter; margin-bottom: 0px; color: grey;}
+h2 {color: deeppink;}
+
+.izq {text-align: left !important;}
+ul {list-style-type: circle;}
+li {margin-bottom: .5em;}
+
+.repro {cursor: pointer; background:none; padding: 0px; margin-left: 2em; border: 0px;}
+
+#container {
+   width: 90%;
+   margin: auto;
+   margin-top: 3em;
+   background-color: #fff;
+   padding-bottom: 0.5em;
+}
+#container p, h1 {
+   text-align: center;
+}
+
+#imagen {
+   width: 640px;
+   border: 1px solid lightsteelblue;
+}
+#nombreImagen {
+   display: inline-block;
+   width: 20em;
+   text-align: center;
+   font-weight: bold;
+   font-size: 110%;
+}
+
+input[type=button]{
+   cursor: pointer;
+}
