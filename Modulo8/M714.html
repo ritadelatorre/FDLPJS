@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M7.14</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1><input class="bot" type="button" id="b1" value="-" onClick='desplegar("b1", "enunciado")'/> Ejercicio M7.14</h1>
+      <div id="enunciado">
+			<p>L'usuari ha d’introduir dos números, i el programa retornarà <em>"Un dels dos números és negatiu"</em>, només si un dels dos números és negatiu.</p>
+		</div>
+      <div class="ejercicio">
+			<h1>Verificar si hi ha un numero negatiu</h1>
+			<p>Introdueix un nombre enter: <input id='numero1' type='number'/></p>
+			<p>Introdueix un altre nombre enter: <input id='numero2' type='number'/></p>
+			<p><input class="boton" type='button' Value=' Verificar ' onClick='validar()'/></p>
+			<p id="resultado"></p>
+
+		</div>
+		<!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+		<script>	
+			function verificar(numero1, numero2) {
+				if(numero1 * numero2 < 0) {
+					document.getElementById("resultado").innerHTML="Un dels dos números és negatiu";
+				} else {
+					document.getElementById("resultado").innerHTML="Els dos números són positius o els dos números són negatius";
+				} 
+			}
+			function validar() {
+				let valido = true;
+				let numero1 = parseInt(document.getElementById("numero1").value);
+				let numero2 = parseInt(document.getElementById("numero2").value);
+
+				if (numero1 ==='' || numero1 === null || isNaN(numero1)) {
+					valido = false;
+				}
+				if (numero2 ==='' || numero2 === null || isNaN(numero2)) {
+					valido = false;
+				}
+				if (!valido) {
+				document.getElementById("resultado").innerHTML="Escriu dos números enteros";
+				} else {
+					verificar(numero1, numero2);
+				}
+			}
+		</script>
+	 </body>
+</html>

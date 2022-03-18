@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M7.13</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1><input class="bot" type="button" id="b1" value="-" onClick='desplegar("b1", "enunciado")'/> Ejercicio M7.13</h1>
+      <div id="enunciado">
+
+			<p>L’usuari ha d'introduir un número i el programa ha de mostrar per pantalla si el número és parell o imparell.</p>
+		</div>
+      <div class="ejercicio">
+			<h1>Número  parell o imparell</h1>
+			<p>Introdueix un nombre enter: <input id='numero' type='number'/></p>
+			<p><input class="boton" type='button' Value=' calcular ' onClick='calcular()'/></p>
+			<p id="resultado"></p>
+
+		</div>
+		<!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+		<script>	
+			function calcular() {
+				let numero = parseInt(document.getElementById("numero").value);
+
+				if (numero ==='' || numero === null || isNaN(numero) || numero<=0) {
+					document.getElementById("resultado").innerHTML="Escriba un número entero positivo";
+				} else {
+					if(numero % 2 == 0) {
+						document.getElementById("resultado").innerHTML="El nombre " + numero + " es parell";
+					} else {
+						document.getElementById("resultado").innerHTML="El nombre " + numero + " es imparell";
+					}
+				}
+			}
+		</script>
+	 </body>
+</html>
+	

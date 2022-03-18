@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M7.1-1</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1><input class="bot" type="button" id="b1" value="-" onClick='desplegar("b1", "enunciado")'/> Ejercicio M7.1-1</h1>
+      <div id="enunciado">
+            <p>Crea un programa on l’usuari introdueix tres notes  i el programa calcula la mitja.</p>
+		<ol>
+			<li><p>Si la mitja és inferior a 5 ha de mostrar el següent missatge per pantalla:<br>
+				<em>No has superat el curs. Has de recuperar"</em></p></li> 
+			<li><p>Si la mitja està entre 5 i 7 ha de mostrar:<br> 
+				<em>Enhorabona! Has aprovat però hauries de seguir practicant</em></p></li> 
+			<li><p>Si la mitja és superior a 7 ha de mostrar: <br>
+				<em>Enhorabona! Has superat el curs! Passa ja al següent nivell!</em></p></li>
+            </ol>
+      </div>
+      <div class="ejercicio">
+            <h1>Cálculo del promedio de notas</h1>
+		<input class="boton" type='button' Value=' calcular '  onClick='calcular()'/>
+      </div>
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script>
+        "use strict"; //Obligamos a definir las variables
+		function calcular() {
+			let nota1=5, nota2=5, nota3=5;
+			let mitja=0;
+					
+			if (mitja<5) {
+				alert("No has superat el curs. Has de recuperar.");
+			} else if (mitja <7) {
+				alert("Enhorabona! Has aprovat però hauries de seguir practicant.");
+			} else {
+				alert("Enhorabona! Has superat el curs! Passa ja al següent nivell!");
+			}
+		
+		}
+	
+	    function desplegar(desde, parte){
+            let quien = document.getElementById(desde).value;
+
+            if (quien=='-') {
+                  document.getElementById(parte).style.display = 'none';
+                  document.getElementById(desde).value = '+';
+            } else {
+                  document.getElementById(parte).style.display = 'block';
+                  document.getElementById(desde).value = '-';
+            }
+         }
+      </script>
+    </body>
+</html>

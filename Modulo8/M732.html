@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M7.32</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1><input type="button" id="b1" value="-" onClick='desplegar("b1", "enunciado")'/> Ejercicio M7.32</h1>
+      <div id="enunciado">
+            <p>En aquest programa l’usuari ha d’introduir un string i el programa ha de mostrar l’string al revés</p> 
+      </div>
+      <div class="ejercicio">
+            <p><label for="numero1">Introduce un texto (te lo muestro al revés):</label></p>
+				<p><input id="texto" type="text" size="50"/></p>        
+
+            <p><input type='button' onClick='mostrar()' Value='continuar' /></p>
+            <p><b>Tu texto al revés</b>:<br> <span id="resultado"></span></p>
+      </div>
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script>
+         function mostrar() {
+            "use strict"; //Obligamos a definir las variables
+				
+				let texto = document.getElementById("texto").value;
+				let deReves = "";
+				let largo = texto.length-1;
+
+				for (let i = largo ; i>=0 ; i--)  {
+					deReves = deReves + texto.charAt(i);
+				}
+				
+				//deReves = deReves.toLowerCase();
+				document.getElementById("resultado").innerHTML = deReves;                  
+
+         }
+         function desplegar(desde, parte){
+            let quien = document.getElementById(desde).value;
+
+            if (quien=='-') {
+                  document.getElementById(parte).style.display = 'none';
+                  document.getElementById(desde).value = '+';
+            } else {
+                  document.getElementById(parte).style.display = 'block';
+                  document.getElementById(desde).value = '-';
+            }
+         }
+      </script>
+    </body>
+</html>
+
+

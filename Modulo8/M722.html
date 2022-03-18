@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M7.2-2</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1><input type="button" id="b1" value="-" onClick='desplegar("b1", "enunciado")'/> Ejercicio M7.2-2</h1>
+      <div id="enunciado">
+            <p>Fes un programa que mostri el següent per pantalla:</p>
+		<blockquote><h3>
+                  * * * * * *<br>
+                  * * * * *<br>
+                  * * * *<br>
+                  * * *<br>
+                  * *<br>
+                  *<br>
+		</h3></blockquote>
+		<p>El nombre de línies formades per * vindrà donat per un número que l’usuari introduirà per <u>pantalla</u></p>
+      </div>
+      <div class="ejercicio">
+		<h1>TRIÁNGULO RECTÁNGULO INVERTIDO DE ASTERISCOS</h1>
+		<p>¿De cuántas lineas quieres que sea? <input type="text" id="alto"/></p>
+		<p><input class="boton" type='button' Value=' Dibujar '  onClick='dibujar()'/></p>
+		<em><h3 id="tri"></h3></em>
+      </div>
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script>
+		function dibujar() {
+			let triangulo = "";
+
+			let lineas = Number(document.getElementById('alto').value);
+			
+			for (let i=lineas; i>0; i--) {
+				for (let j=1; j<=i; j++) {
+					triangulo += "* ";
+				}
+				triangulo += "<br>";
+			}
+			document.getElementById('tri').innerHTML = triangulo;
+		}
+		
+	    function desplegar(desde, parte){
+            let quien = document.getElementById(desde).value;
+
+            if (quien=='-') {
+                  document.getElementById(parte).style.display = 'none';
+                  document.getElementById(desde).value = '+';
+            } else {
+                  document.getElementById(parte).style.display = 'block';
+                  document.getElementById(desde).value = '-';
+            }
+         }
+      </script>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M7.17</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1><input class="bot" type="button" id="b1" value="-" onClick='desplegar("b1", "enunciado")'/> Ejercicio M7.17</h1>
+      <div id="enunciado">
+			<p>Fer un programa on l'usuari introdueix per pantalla un caràcter i un número. <br>
+				El programa imprimeix per pantalla un quadrat amb la mida i el caràcter introduïts per l'usuari.</p>
+		</div>
+      <div class="ejercicio">
+			<h1>CUADRADO DE CARACTERES</h1>
+			<p>¿Con cuál caracter lo quieres hacer?: <input id='caracter' type='text' maxlength='1'/></p>
+			<p>¿De cuántas lineas quieres que sea? (1 - 10): <input id='numero' type='number'/></p>
+			<p><input class="boton" type='button' Value=' Mostrar ' onClick='mostrar()'/></p>
+			<h1 id="resultado"></h1>
+
+		</div>
+		<!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+		<script>
+			function mostrar() {
+				let i = 0;
+				let j = 0;
+				let cuadrado = "";
+				let caracter = document.getElementById("caracter").value;
+				let lado = parseInt(document.getElementById("numero").value);
+
+				if (lado ==='' || lado === null || isNaN(lado) || lado<1 || lado>10 ) {
+					document.getElementById("resultado").innerHTML="Escriba un número entero entre 1 y 10";
+				} else {
+					for (i = 1; i <= lado; i++) {
+						for (j = 1; j <= lado; j++) {
+							cuadrado += caracter + " ";
+						}
+						cuadrado += "<br>";
+					}
+					document.getElementById("resultado").innerHTML = cuadrado;
+				}
+			}
+		</script>
+	</body>
+</html>

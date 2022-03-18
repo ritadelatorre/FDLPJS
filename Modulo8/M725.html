@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M7.2-5</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1>Ejercicio M7.2-5</h1>
+      <div id="enunciado">
+			<p>L'usuari introdueix un nombre per teclat i el programa imprimeix per pantalla si el nombre és primer o no.</p>
+      </div>
+      <div class="ejercicio">
+			<h1>REVISAR SI UN NÚMERO ES PRIMO</h1>
+			<p>Escribe un número entero: <input type="text" id="nro"/></p>
+			<p><input class="boton" type='button' Value=' Calcular '  onClick='main()'/></p>
+			<em><h3 id="resultado"></h3></em>
+		</div>
+		<!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+		<script>
+
+			function esPrimo(numero) {
+
+				let i=2;
+				let primo = true;
+				while (i<numero && primo==true) {
+					if (numero % i == 0) {
+						primo = false;
+					}
+					i++;
+				}		
+				return primo;
+			}
+
+			function main() {
+
+				let numero = Number(document.getElementById('nro').value);
+				if (esPrimo(numero)) {
+					document.getElementById('resultado').innerHTML = "El número " + numero + " es primo.";
+				} else {
+					document.getElementById('resultado').innerHTML = "El número " + numero + " no es primo.";			
+				}
+			}
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M7.2-4</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1><input type="button" id="b1" value="-" onClick='desplegar("b1", "enunciado")'/> Ejercicio M7.2-4</h1>
+      <div id="enunciado">
+			<p>Realitzar un programa on l’usuari introdueix un número i el programa li retorna el factorial del número introduit.</p>
+			<p>El factorial de n se define como el producto de todos los números enteros positivos desde 1 (es decir, los números naturales) hasta n.</p>			  
+      </div>
+      <div class="ejercicio">
+		<h1>FACTORIAL DE UN NÚMERO</h1>
+		<p>Escribe un número entero: <input type="text" id="nro"/></p>
+		<p><input class="boton" type='button' Value=' Calcular '  onClick='dibujar()'/></p>
+		<em><h3 id="resultado"></h3></em>
+      </div>
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script>
+
+			function dibujar() {
+				let numero = Number(document.getElementById('nro').value);
+				let factorial = 1;
+				let mensaje = numero + "! = ";
+					
+				for (let i=1; i<=numero; i++) {
+
+					factorial = factorial * i ;				
+					if ( i < numero ) {
+						mensaje += i + " x ";
+					} else {
+						mensaje += i + " = ";
+					}				
+				}
+				mensaje += factorial;
+				document.getElementById('resultado').innerHTML = mensaje;				
+			}
+			
+			function desplegar(desde, parte){
+				let quien = document.getElementById(desde).value;
+
+				if (quien=='-') {
+						document.getElementById(parte).style.display = 'none';
+						document.getElementById(desde).value = '+';
+				} else {
+						document.getElementById(parte).style.display = 'block';
+						document.getElementById(desde).value = '-';
+				}
+			}
+		</script>
+	</body>
+</html>

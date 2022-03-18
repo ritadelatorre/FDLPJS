@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M7.2-7</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1>Ejercicio M7.2-7</h1>
+      <div id="enunciado">
+			<p>Crea un programa on l’usuari introdueixi un any i el programa digui si l’any és de traspàs o no</p>
+      </div>
+      <div class="ejercicio">
+			<h1>REVISAR SI UN AÑO ES BISIESTO</h1>
+			<p>Introduce un año: <input type="text" id="nro"/></p>
+			<p><input class="boton" type='button' Value=' Calcular '  onClick='main()'/></p>
+			<em><h3 id="resultado"></h3></em>
+		</div>
+
+		<!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+		<script>
+				function esBisiesto(year) {
+					let bisiesto=false;
+					if((year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0))) {
+						bisiesto=true;
+					}
+					return bisiesto;
+				}
+
+				function main () {
+
+					let year=Number(document.getElementById('nro').value);
+					let resultado;
+
+					if (esBisiesto(year)) {
+						resultado = "El año " + year + " es bisiesto";
+					} else  {
+						resultado = "El año " + year + " no es bisiesto";			
+					}
+					document.getElementById('resultado').innerHTML = resultado;
+				}
+
+		</script>
+	</body>
+</html>	

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M7.2-8</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1><input type="button" id="b1" value="-" onClick='desplegar("b1", "enunciado")'/> Ejercicio M7.2-8</h1>
+      <div id="enunciado">
+			<p>L’usuari introdueix un nombre per teclat i el programa li ha de mostrar la successió de Fibonacci.</p>
+			<p><u>Exemple</u> Si l’usuari introdueix el 10 el resultat ha de ser:</p>
+			<h3><em>0,1,1,2,3,5,8,13,21,34</em></h3>			  
+      </div>
+      <div class="ejercicio">
+		<h1>SUCESIÓN DE FIBONACCI</h1>
+		<p>Escribe un número entero: <input type="number" id="nro"/></p>
+		<p><input class="boton" type='button' Value=' Calcular '  onClick='fibonacci()'/></p>
+		<em><h3 id="resultado"></h3></em>
+      </div>
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script>
+
+			function fibonacci() {
+				let numero = Number(document.getElementById('nro').value); // número de elementos de la serie
+				console.log(numero);
+				let n1 = 0;
+				let n2 = 1;
+				let auxiliar = 0;
+				let i = 1;
+				let mensaje = "0";	
+
+				do {
+					auxiliar = n1;
+					n1 = n2;
+					mensaje += ", " + n1;
+            	n2 = auxiliar + n1;			
+					i++;
+				} while (i < numero);
+				
+				document.getElementById('resultado').innerHTML = mensaje;				
+			}
+			
+			function desplegar(desde, parte){
+				let quien = document.getElementById(desde).value;
+
+				if (quien=='-') {
+						document.getElementById(parte).style.display = 'none';
+						document.getElementById(desde).value = '+';
+				} else {
+						document.getElementById(parte).style.display = 'block';
+						document.getElementById(desde).value = '-';
+				}
+			}
+		</script>
+	</body>
+</html>

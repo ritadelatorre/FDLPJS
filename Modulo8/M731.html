@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M7.3-1</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1><input type="button" id="b1" value="-" onClick='desplegar("b1", "enunciado")'/> Ejercicio M7.3-1</h1>
+      <div id="enunciado">
+			<p>Realitzar un programa que tingui un menú on se li mostraran 4 opcions a l’usuari per pantalla:</p>
+			<ol>
+				<li>Quadrat</li>
+				<li>Triangle</li>
+				<li>Rectangle</li>
+				<li>Cercle</li>
+				<li>Sortir del programa</li>
+			</ol>
+			</p>Segons l’opció escollida haurà d’introduir unes dades o altres perquè el programa mostri per pantalla l’àrea del polígon escollit.</p>
+      </div>
+      <div class="ejercicio">
+		<h1>CÁLCULO DE ÁREAS</h1>
+			<p>1. Cuadrado</p>
+			<p>2. Triángulo</p>
+			<p>3. Rectángulo</p>
+			<p>4. Círculo</p>
+			<p>5. Salir del programa</p>
+			<p>¿ Qué deseas ?<input type="number" id="opcion"/></p>
+			<p><input type='button' id="continuar" onClick='main()' Value='Calcular' /></p>
+		
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script>
+			function cuadrado() {
+				let lado = 0;
+				lado = prompt("Medida del lado del cuadrado:");
+				alert("El área del cuadrado es de " + lado*lado);
+			}
+			
+			function triangulo() {
+				let base = 0;
+				let altura = 0;
+				base = prompt("Base: ");
+				altura = prompt("Altura: ");
+				alert("\nEl área del triángulo es de " + base*altura/2);
+			}
+			
+			function rectangulo() {
+				let alto = 0;
+				let ancho = 0;
+				alto = prompt("Alto: ");
+				ancho = prompt("Ancho: ");
+				alert("\nEl área del rectángulo es de " + alto*ancho);
+			}
+
+			function circulo() {
+				const PI = 3.1416;
+				let radio = 0.0;
+				radio = prompt("Indica el radio del círculo");
+				alert("\nEl área del circulo es de " + PI*radio*radio);
+			}
+
+			function main() {
+				let opcion = Number(document.getElementById("opcion").value);
+				switch (opcion) {
+					case 1: 
+						cuadrado();
+						break;
+					case 2:
+						triangulo();
+						break;
+					case 3:
+						rectangulo();
+						break;
+					case 4:
+						circulo();
+						break;
+					case 5:
+						alert ("adeu");
+						document.getElementById("continuar").disabled=true;
+						break;
+					default:
+						alert ("Opción no valida. Elige una opción entre 1 y 5");
+						break;
+				}
+				document.getElementById("opcion").value ="";
+			}
+			
+			function desplegar(desde, parte){
+				let quien = document.getElementById(desde).value;
+
+				if (quien=='-') {
+						document.getElementById(parte).style.display = 'none';
+						document.getElementById(desde).value = '+';
+				} else {
+						document.getElementById(parte).style.display = 'block';
+						document.getElementById(desde).value = '-';
+				}
+			}
+		</script>
+	</body>
+</html>
+
+
+

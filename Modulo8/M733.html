@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+ <html>
+	  <head>
+		 <title>Ejercicio M7.33</title>
+		 <meta charset='utf-8'>
+		 <link href="./css/estilos.css" rel="stylesheet">
+	  </head>
+	  <body>
+		 <!--Esto es HTML-->
+		 <h1><input type="button" id="b1" value="-" onClick='desplegar("b1", "enunciado")'/> Ejercicio M7.33</h1>
+		 <div id="enunciado">
+				 <p>L’usuari ha d’introduir una frase  i el programa ha de dir si la frase és un palíndrom.</p> <p>Probar con <em>"A tí no, bonita."</em></p> 
+		 </div>
+		 <div class="ejercicio">
+				 <p><label for="texto">Introduce una frase (veremos si es palíndromo): </label></p>
+				 <p><input id="texto" type="text" size="50" value="A tí no, bonita."/></p>        
+ 
+				 <p><input type='button' onClick='mostrar()' Value='continuar' /></p>
+				 <p><b>Tu texto al revés</b>:&nbsp;&nbsp; <span id="resultado"></span></p>
+				 <em><h3 id="palindromo"></h3></em>
+		 </div>
+		 <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+		 <script>
+			function limpiarTexto(texto) {
+               let textoLimpio=texto;
+               //Quitamos los acentos
+               textoLimpio=textoLimpio.replace(/á/g, "a");
+               textoLimpio=textoLimpio.replace(/é/g, "e");
+               textoLimpio=textoLimpio.replace(/í/g, "i");
+               textoLimpio=textoLimpio.replace(/ó/g, "o");
+               textoLimpio=textoLimpio.replace(/ú/g, "u");
+               //Quitamos espacios, comas y puntos
+               textoLimpio=textoLimpio.replace(/ /g, "");
+               textoLimpio=textoLimpio.replace(/,/g, "");
+               textoLimpio=textoLimpio.replace(/\./g, "");
+               
+               //Convertimos a mayúsculas
+               textoLimpio=textoLimpio.toUpperCase();
+               //alert(textoLimpio);
+					return textoLimpio;
+
+         }
+
+			function mostrar() {
+				 "use strict"; //Obligamos a definir las variables
+				 
+				 let texto = document.getElementById("texto").value;
+				 let deReves = "";
+				 let largo = texto.length-1;
+
+				 texto=limpiarTexto(texto);
+ 
+				 for (let i = largo ; i>=0 ; i--)  {
+					 deReves = deReves + texto.charAt(i);
+				 }
+				 texto=limpiarTexto(texto);
+				 
+				 //deReves = deReves.toLowerCase();
+				 document.getElementById("resultado").innerHTML = deReves;
+
+				if (texto===deReves) {
+				   document.getElementById("palindromo").innerHTML = "Tu texto ES un palíndromo";
+            } else {
+				   document.getElementById("palindromo").innerHTML = "Tu texto NO ES un palíndromo";
+				}                  
+			 }
+
+			 function desplegar(desde, parte){
+				 let quien = document.getElementById(desde).value;
+ 
+				 if (quien=='-') {
+						 document.getElementById(parte).style.display = 'none';
+						 document.getElementById(desde).value = '+';
+				 } else {
+						 document.getElementById(parte).style.display = 'block';
+						 document.getElementById(desde).value = '-';
+				 }
+			 }
+			
+		 </script>
+	  </body>
+ </html>

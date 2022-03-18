@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M7.36</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1><input type="button" id="b1" value="-" onClick='desplegar("b1", "enunciado")'/> Ejercicio M7.36</h1>
+      <div id="enunciado">
+            <p>Dona’t un array de números, el programa ha de mostrar la suma de tots els números parells i la suma de tots els números imparells.</p> 
+      </div>
+      <div class="ejercicio">
+            <p><label for="texto">Introduce varios números enteros separados por coma:</label></p>
+				<p><input id="texto" type="text" size="100" value="1, 3, 9, 8, 4, 11"/></p>
+
+            <p><input type='button' onClick='mostrar()' Value='continuar' /></p>
+				<em><h3 id="array"></h3></em>
+				<em><h3 id="pares"></h3></em>
+				<em><h3 id="impares"></h3></em>
+      </div>
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script>
+         function mostrar() {
+            "use strict"; //Obligamos a definir las variables
+				
+				let listaNumeros=[];
+				listaNumeros = document.getElementById("texto").value.split(', ');
+				let numerosPares = 0;
+				let numerosImpares = 0;
+				let numero = 0;
+				let largo = listaNumeros.length;
+
+				document.getElementById("array").innerHTML = "Valores en Array: " + listaNumeros;
+				for (let i=0; i<largo; i++) { 
+				
+					if (listaNumeros[i] % 2 == 0) {
+						numerosPares += Number(listaNumeros[i]);
+					} else {
+						numerosImpares += Number(listaNumeros[i]);
+					}
+				}
+				document.getElementById("pares").innerHTML = "Suma de números pares: " + numerosPares;
+				document.getElementById("impares").innerHTML = "Suma de números impares: " + numerosImpares;
+				
+         }
+
+         function desplegar(desde, parte){
+            let quien = document.getElementById(desde).value;
+
+            if (quien=='-') {
+                  document.getElementById(parte).style.display = 'none';
+                  document.getElementById(desde).value = '+';
+            } else {
+                  document.getElementById(parte).style.display = 'block';
+                  document.getElementById(desde).value = '-';
+            }
+         }
+      </script>
+    </body>
+</html>

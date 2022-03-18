@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M7.16</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1><input class="bot" type="button" id="b1" value="-" onClick='desplegar("b1", "enunciado")'/> Ejercicio M7.16</h1>
+      <div id="enunciado">
+			<p>L'usuari introduirà un número (del 1 al 10) per pantalla, 
+				i el programa li mostrarà la taula de multiplicar d’aquell número.</p>
+		</div>
+      <div class="ejercicio">
+			<h1>Taula de multiplicar</h1>
+			<p>Introdueix un nombre enter (entre 1 i 10): <input id='numero' type='number'/></p>
+			<p><input class="boton" type='button' Value=' Mostrar ' onClick='mostrar()'/></p>
+			<p id="resultado"></p>
+
+		</div>
+		<!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+		<script>
+			function mostrar() {
+				let i;
+				let taula = "";
+				let numero = parseInt(document.getElementById("numero").value);
+
+				if (numero ==='' || numero === null || isNaN(numero) || numero<1 || numero>10 ) {
+					document.getElementById("resultado").innerHTML="Escriba un número entero entre 1 y 10";
+				} else {
+					for (i = 1; i <= 10; i++) {
+						taula += numero + " x " + i + " = " + numero*i + "<br>";
+					}
+					
+					document.getElementById("resultado").innerHTML = taula;
+				}
+			}
+		</script>
+	 </body>
+</html>

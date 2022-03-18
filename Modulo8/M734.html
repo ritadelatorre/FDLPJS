@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+ <html>
+	  <head>
+		 <title>Ejercicio M7.33</title>
+		 <meta charset='utf-8'>
+		 <link href="./css/estilos.css" rel="stylesheet">
+	  </head>
+	  <body>
+		 <!--Esto es HTML-->
+		 <h1><input type="button" id="b1" value="-" onClick='desplegar("b1", "enunciado")'/> Ejercicio M7.33</h1>
+		 <div id="enunciado">
+				<p>L’usuari ha d’introduir un DNI i el programa ha de dir si la lletra és correcte o no 
+					amb el nombre de DNI.</p> 
+				<p>Si la lletra no és correcta, ha de dir quina lletra és la correcta.</p>  
+		 </div>
+		 <div class="ejercicio">
+				 <p><label for="texto">Introduce un DNI (con su letra): </label></p>
+				 <p><input id="texto" type="text" size="50"/></p>        
+ 
+				 <p><input type='button' onClick='mostrar()' Value='continuar' /></p>
+				 <p><b>DNI correcto</b>:&nbsp;&nbsp; <span id="resultado"></span></p>
+				 <em><h3 id="mensaje"></h3></em>
+		 </div>
+		 <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+		 <script>
+			function mostrar() {
+				"use strict"; //Obligamos a definir las variables
+				 
+				const CADENA_DNI="TRWAGMYFPDXBNJZSQVHLCKE";
+				let dni = document.getElementById("texto").value;
+				let numeroDni=0;
+				let lletraDNI="";
+				let digitoControl=0;
+				let lletraCalculada="";
+				
+				dni = dni.toUpperCase();
+				document.getElementById("texto").value = dni;
+
+				let largoDNI = dni.length - 1;
+				numeroDni = dni.substring(0,largoDNI);
+				
+				lletraDNI = dni.charAt(largoDNI);
+
+				digitoControl = numeroDni % 23;
+				lletraCalculada = CADENA_DNI.charAt(digitoControl);
+
+				document.getElementById("resultado").innerHTML = numeroDni + lletraCalculada;
+
+				if (lletraDNI === lletraCalculada) {
+				   document.getElementById("mensaje").innerHTML = "Letra DNI (" + lletraCalculada + ") es correcta.";
+            } else {
+				   document.getElementById("mensaje").innerHTML = "La letra que corresponde a ese DNI es " + lletraCalculada;
+				}                  
+			 }
+
+			 function desplegar(desde, parte){
+				 let quien = document.getElementById(desde).value;
+ 
+				 if (quien=='-') {
+						 document.getElementById(parte).style.display = 'none';
+						 document.getElementById(desde).value = '+';
+				 } else {
+						 document.getElementById(parte).style.display = 'block';
+						 document.getElementById(desde).value = '-';
+				 }
+			 }
+			
+		 </script>
+	  </body>
+ </html>

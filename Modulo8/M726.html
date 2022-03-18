@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M7.26</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1><input type="button" id="b1" value="-" onClick='desplegar("b1", "enunciado")'/> Ejercicio M7.26</h1>
+      <div id="enunciado">
+            <p>Introducir una serie de números hasta hallar un número primo.</p>
+      </div>
+      <div class="ejercicio">
+				<h1>SE DETIENE AL INTRODUCIR UN NÚMERO PRIMO</h1>   
+
+            <p><input type='button' onClick='mostrar()' Value='Comenzar' /></p>
+            <p id = "resultado"></p>
+      </div>
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script>
+
+			function validarEntero(numero) {
+
+				validado=true;
+				if (isNaN(numero) || numero == "" || numero < 1) {
+                  validado=false;
+            }
+				return validado;
+			}
+
+			function esPrimo(numero) {
+				let i=2;
+				let primo = true;
+				while (i<numero && primo==true) {
+					if (numero % i == 0) {
+						primo = false;
+					}
+					i++;
+				}		
+				return primo;
+			}
+
+
+			function mostrar() {
+				let validado = true;
+				let resultado;
+				let numero=0;
+				let encontrado = false;
+				const MENSAJE = "Introduce un número entero positivo ";
+				let pregunta = MENSAJE;
+			
+
+            while (!encontrado) {
+                  numero = Number(prompt(pregunta,"número"));
+						validado = validarEntero(numero);
+						if (validado) {
+							encontrado=esPrimo(numero);
+							pregunta	= MENSAJE;
+						} else {
+							pregunta = "ERROR en la introducción del dato\n" + MENSAJE;
+						}
+            }
+				resultado = "El número <b>" + numero + "</b> es un número primo";
+				document.getElementById("resultado").innerHTML = resultado;
+			}
+
+         function desplegar(desde, parte){
+            let quien = document.getElementById(desde).value;
+
+            if (quien=='-') {
+                  document.getElementById(parte).style.display = 'none';
+                  document.getElementById(desde).value = '+';
+            } else {
+                  document.getElementById(parte).style.display = 'block';
+                  document.getElementById(desde).value = '-';
+            }
+         }
+      </script>
+    </body>
+</html>

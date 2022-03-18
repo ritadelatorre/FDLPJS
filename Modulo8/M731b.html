@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M7.3-1</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1><input type="button" id="b1" value="-" onClick='desplegar("b1", "enunciado")'/> Ejercicio M7.3-1</h1>
+      <div id="enunciado">
+			<p>Realitzar un programa que tingui un menú on se li mostraran 4 opcions a l’usuari per pantalla:</p>
+			<ol>
+				<li>Quadrat</li>
+				<li>Triangle</li>
+				<li>Rectangle</li>
+				<li>Cercle</li>
+				<li>Sortir del programa</li>
+			</ol>
+			</p>Segons l’opció escollida haurà d’introduir unes dades o altres perquè el programa mostri per pantalla l’àrea del polígon escollit.</p>
+      </div>
+      <div id="ejercicio" class="ejercicio">
+		<h1>CÁLCULO DE ÁREAS</h1>
+		<p>
+			<input type="radio" id="1" name="menu" value="1"><label for="1">Cuadrado</label><br>
+			<input type="radio" id="2" name="menu" value="2"><label for="2">Triángulo</label><br>
+			<input type="radio" id="3" name="menu" value="3"><label for="3">Rectángulo</label><br>
+			<input type="radio" id="4" name="menu" value="4"><label for="4">Círculo</label><br>
+			<input type="radio" id="5" name="menu" value="5"><label for="5">Salir del programa</label>
+		</p>
+		<p><input type='button' id="continuar" onClick='main()' Value='continuar' /></p>
+		</div>	
+		<div id="cuadrado" style="display: none;">
+			<h3>Introduce la medida del lado del cuadrado:</h3>
+			<p>Medida del lado: <input id="lado" type="number"/></p>
+			<p>
+				<input type='button' onClick='cuadrado()' Value='calcular' />
+				<input type='button' onClick='verMenu()' Value='continuar' />
+			</p>
+			<strong><p id="areac"></p></strong> 
+		</div>
+		<div id="triangulo" style="display: none;">
+			<h3>Introduce las medidas del triangulo:</h3>
+			<p>Base: <input id="base" type="number"/></p>
+			<p>Altura: <input id="altura" type="number"/></p>
+			<p>
+				<input type='button' onClick='triangulo()' Value='calcular' />
+				<input type='button' onClick='verMenu()' Value='continuar' />
+			</p>
+			<strong><p id="areat"></p></strong> 
+		</div>
+		<div id="rectangulo" style="display: none;">
+			<h3>Introduce las medidas del rectángulo:</h3>
+			<p>Alto: <input id="alto" type="number"/></p>
+			<p>Largo: <input id="largo" type="number"/></p>
+			<p>
+				<input type='button' onClick='rectangulo()' Value='calcular' />
+				<input type='button' onClick='verMenu()' Value='continuar' />
+			</p>
+			<strong><p id="arear"></p></strong> 			
+		</div>
+		<div id="circulo" style="display: none;">
+			<h3>Introduce la medida del radio del circulo:</h3>
+			<p>Radio: <input id="radio" type="number"/></p>
+			<p>
+				<input type='button' onClick='circulo()' Value='calcular' />
+				<input type='button' onClick='verMenu()' Value='continuar' />
+			</p>
+			<strong><p id="areacir"></p></strong> 
+		</div>
+		<div id="despedida" style="display: none;">
+			<h1>Hasta la vista!</h1>
+		</div>
+
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script>
+			function esconder() {
+				document.getElementById("cuadrado").style.display = 'none';
+				document.getElementById("triangulo").style.display = 'none';
+				document.getElementById("rectangulo").style.display = 'none';
+				document.getElementById("circulo").style.display = 'none';
+				document.getElementById("despedida").style.display = 'none';
+			}
+
+			function verMenu() {
+				esconder();
+				document.getElementById("ejercicio").style.display = 'block';
+			}
+
+			function mostrar(area) {
+				document.getElementById("ejercicio").style.display = 'none';
+				document.getElementById(area).style.display = 'block';
+			}
+
+			function cuadrado() {
+				let lado = 2;
+				lado = Number(document.getElementById("lado").value);
+				document.getElementById("areac").innerHTML = "El área del cuadrado es de " + lado * lado;
+			}
+
+			function triangulo() {
+				let base = 0;
+				let altura = 0;
+				base = Number(document.getElementById("base").value);
+				altura = Number(document.getElementById("altura").value);
+				document.getElementById("areat").innerHTML = "El área del triángulo es de " + base*altura/2;
+			}
+			
+			function rectangulo() {
+				let alto = 0;
+				let ancho = 0;
+				alto = Number(document.getElementById("alto").value);
+				ancho = Number(document.getElementById("largo").value);
+				document.getElementById("arear").innerHTML = "El área del rectángulo es de " + alto*ancho;
+			}
+
+			function circulo() {
+				const PI = 3.1416;
+				let radio = 0;
+				radio = Number(document.getElementById("radio").value);
+				document.getElementById("areacir").innerHTML = "El área del circulo es de " + (PI * radio * radio);
+			}
+
+			function main() {
+				esconder();
+				let opcion;
+				
+				if (document.getElementById("1").checked) {
+					mostrar("cuadrado");
+				} else if (document.getElementById("2").checked) {
+					mostrar("triangulo");
+				} else if (document.getElementById("3").checked) {
+					mostrar("rectangulo");
+				} else if (document.getElementById("4").checked) {
+					mostrar("circulo");
+				} else {
+					mostrar("despedida");
+					document.getElementById("continuar").disabled=true;
+				} 
+			}
+			
+			function desplegar(desde, parte){
+				let quien = document.getElementById(desde).value;
+
+				if (quien=='-') {
+						document.getElementById(parte).style.display = 'none';
+						document.getElementById(desde).value = '+';
+				} else {
+						document.getElementById(parte).style.display = 'block';
+						document.getElementById(desde).value = '-';
+				}
+			}
+		</script>
+	</body>
+</html>
+
+
+

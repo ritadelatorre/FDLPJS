@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M7.36</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1><input type="button" id="b1" value="-" onClick='desplegar("b1", "enunciado")'/> Ejercicio M7.36</h1>
+      <div id="enunciado">
+            <p>Un grup d’amics ha quedat per fer una fideuà, els ingredients principals seran:					fideus, gambes, i calamars.</p> 
+				<p>Saben que per cada quatre persones han d’utilitzar mig quilo de fideus, 400 grams de calamars	i 200 grams de gambes.</p> 
+				<p>S’ha de fer un programa que demani per pantalla el preu per quilo de cada ingredient i el nombre d’amics que seran per dinar.</p> 
+				<p>El programa ha de calcular les quantitats necessàries de cada ingredient, el preu per persona i el preu final de la fideuà.</p> 
+      </div>
+      <div class="ejercicio">
+				<h1>PREPARANDO FIDEUÀ</h1>
+            <p><label for="amigos">¿Número de personas? :</label>
+					<input id="amigos" type="number" value="1"/></p>
+				<p><label for="precioFideos">Precio kilo fideos €:</label>
+					<input id="precioFideos" type="text" value="0.5"/></p>
+				<p><label for="precioCalamares">Precio kilo calamares € :</label>
+					<input id="precioCalamares" type="text" value="18"/></p>
+				<p><label for="precioGambas">Precio kilo gambas € :</label>
+					<input id="precioGambas" type="text" value="30"/></p>
+
+            <p><input type='button' onClick='calcularFideua()' Value='continuar' /></p>
+				<div id="resultado" style="display: none;">
+					<h3><em>Se necesitan</em></h3>
+					<p id="cf"></p>
+					<p id="cc"></p>
+					<p id="cg"></p><br>
+					<p id="porPersona"></p>
+					<p id="total"></p>
+
+				</div>
+      </div>
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script>
+			function calcularFideua() {
+				const CANTIDAD_FIDEOS = 0.5;
+				const CANTIDAD_CALAMARES = 0.4;
+				const CANTIDAD_GAMBAS = 0.2;
+				let precioKgFideos = parseFloat(document.getElementById("precioFideos").value);
+				let precioKgCalamares = parseFloat(document.getElementById("precioCalamares").value);
+				let precioKgGambas = parseFloat(document.getElementById("precioGambas").value);
+				let numeroAmigos = parseInt(document.getElementById("amigos").value);
+				
+				let totalFideos = (CANTIDAD_FIDEOS * precioKgFideos) / 4;
+				let totalCalamares = (CANTIDAD_CALAMARES * precioKgCalamares) / 4;
+				let totalGambas = (CANTIDAD_GAMBAS * precioKgGambas) / 4;
+
+				let qttyFideos = CANTIDAD_FIDEOS / 4 * numeroAmigos;
+				let qttyCalamares = CANTIDAD_CALAMARES  / 4 * numeroAmigos;
+				let qttyGambas = CANTIDAD_GAMBAS / 4 * numeroAmigos;
+
+				let precioPersona = totalFideos + totalCalamares + totalGambas;
+				let costeFideua = precioPersona * numeroAmigos;
+
+				let mensaje;
+				mensaje = qttyFideos.toFixed(3) + " kg. Fideos" 
+				// precioKgFideos.toFixed(2) + " = €" + totalFideos.toFixed(2);
+				document.getElementById("cf").innerHTML = mensaje;
+
+				mensaje = qttyCalamares.toFixed(3) + " kg. Calamares" 
+				// precioKgCalamares.toFixed(2) + " = €" + totalCalamares.toFixed(2);
+				document.getElementById("cc").innerHTML = mensaje;
+
+				mensaje = qttyGambas.toFixed(3) + " kg. Gambas" 
+				// precioKgGambas.toFixed(2) + " = €" + totalGambas.toFixed(2);
+				document.getElementById("cg").innerHTML = mensaje;
+
+				mensaje = "Total € por personas ( " + numeroAmigos + " ) = €" + precioPersona.toFixed(2);
+				document.getElementById("porPersona").innerHTML = mensaje;
+
+				mensaje = "Total Fideuà = €" + costeFideua.toFixed(2);
+				document.getElementById("total").innerHTML = mensaje;	
+
+				document.getElementById("resultado").style.display="block";	
+			}
+			
+         function desplegar(desde, parte){
+            let quien = document.getElementById(desde).value;
+
+            if (quien=='-') {
+                  document.getElementById(parte).style.display = 'none';
+                  document.getElementById(desde).value = '+';
+            } else {
+                  document.getElementById(parte).style.display = 'block';
+                  document.getElementById(desde).value = '-';
+            }
+         }
+		</script>
+	</body>
+</html>		

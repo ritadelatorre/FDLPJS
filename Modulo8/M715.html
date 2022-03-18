@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M7.15</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1><input class="bot" type="button" id="b1" value="-" onClick='desplegar("b1", "enunciado")'/> Ejercicio M7.15</h1>
+      <div id="enunciado">
+			<p>Mostra per pantalla els nombres parells compresos entre el 100 i el 0 en ordre descendent.</p>
+		</div>
+      <div class="ejercicio">
+			<h1>Nombres parells compresos entre el 100 i el 0 en ordre descendent</h1>
+			<p><input class="boton" type='button' Value=' Mostrar ' onClick='mostrar()'/></p>
+			<p id="resultado"></p>
+
+		</div>
+		<!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+		<script>	
+			function mostrar() {
+				let i; 
+				let numeros = [];
+
+				for (i = 100; i >= 0; i -= 2) {
+					numeros.push(i);			
+				}
+				document.getElementById("resultado").innerHTML = numeros;
+			}
+		</script>
+	 </body>
+</html>

@@ -1,0 +1,42 @@
+ <!DOCTYPE html>
+ <html>
+	  <head>
+		 <title>Ejercicio M7.18</title>
+		 <meta charset='utf-8'>
+		 <link href="./css/estilos.css" rel="stylesheet">
+	  </head>
+	  <body>
+		 <!--Esto es HTML-->
+		 <h1><input class="bot" type="button" id="b1" value="-" onClick='desplegar("b1", "enunciado")'/> Ejercicio M7.18</h1>
+		 <div id="enunciado">
+			 <p>Crea un programa on l’usuari introdueixi una temperatura en ºC <br>
+				i es mostri per pantalla la conversió en ºFahrenheit.</p>
+		 </div>
+		 <div class="ejercicio">
+			 <h1>CELSIUS TO FARENHEIT </h1>
+			 <p>Introduce una temperatura en ºC: <input id='temperatura' type='number' maxlength='5'/></p>
+			 <p><input class="boton" type='button' Value=' Pasar a Fahrenheit ' onClick='toFahrenheit()'/></p>
+			 <p><input class="boton" type='button' Value=' Pasar a Celsius ' onClick='toCelsius()'/></p>
+			 <h1 id="resultado"></h1>
+ 
+		 </div>
+		 <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+		 <script>
+			 function toFahrenheit() {
+					let temperatura = document.getElementById("temperatura").value;
+					let cToFahr = temperatura * 9 / 5 + 32;
+					let mensaje = temperatura +'\xB0C es ' + cToFahr.toFixed(2) + ' \xB0F.';
+					document.getElementById("resultado").innerHTML = mensaje;
+				}
+
+				function toCelsius() {
+					let temperatura = document.getElementById("temperatura").value;
+					let fToCel = (temperatura - 32) * 5 / 9;
+					let mensaje = temperatura +'\xB0F es ' + fToCel.toFixed(2) + '\xB0C.';
+					document.getElementById("resultado").innerHTML = mensaje;
+				} 
+
+		 </script>
+	 </body>
+ </html>
+ 

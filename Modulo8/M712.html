@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M7.12</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1><input class="bot" type="button" id="b1" value="-" onClick='desplegar("b1", "enunciado")'/> Ejercicio M7.12</h1>
+      <div id="enunciado">
+
+			<p>Un professor vol calcular les mitges de les notes de tota la classe.</p> 
+			<p>Crea una aplicació on l'usuari introduirà un número per pantalla (<em>el número correspon al número de notes que vol introduir</em>) i el programa li demanarà que introdueixi les notes de tots els alumnes.</p>
+			<p>Un cop les notes han sigut introduides, el programa retorna el següent:</p>
+			<ul>
+			<li>Si la nota mitjana és menor que 5: <em>"La nota mitjana de la classe està suspesa. Els alumnes haurien de preguntar els seus dubtes i treballar més".</em></li>
+			<li>Si la nota és inferior a 7: <em>"La nota mitjana de la classe és bona, 
+			* però els alumnes haurien de millorar el treball personal".</em></li>
+			<li>Per la resta de casos, el missatge ha de ser: 
+			<em>"Enhorabona! La nota mitjana de la classe es correspon amb l'esforç realitzat".</em></li>
+			</ul>
+			<p>Les notes han d'estar compreses entre 0 i 10.</p>
+		</div>
+      <div class="ejercicio">
+			<h1>Cálculo de la mitjana de notas de la classe</h1>
+			<input class="boton" type='button' Value=' calcular '  onClick='calcular()'/>
+			<p id="resultado"></p>
+			<p id="comentario"></p>
+		</div>
+		<!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+		<script>	
+				let numAlumnos = 0;
+				let i = 0;
+				let nota = 0.0;
+				let sumaNotas = 0;
+				let mitjanaClasse = 0;
+				
+				numAlumnos = prompt("Indica el nombre d'alumnes: ");
+				
+				for (i = 1; i <= numAlumnos; i++) {					
+					do {
+						nota = Number(prompt("Introdueix la nota de l'alumne " + i + ": "));
+					} while (nota < 0 || nota > 10);					
+					sumaNotas += nota;
+				}
+
+				mitjanaClasse = (sumaNotas/numAlumnos);
+				
+				document.getElementById("resultado").innerHTML = "La nota promedio es " + mitjanaClasse.toFixed(2);
+				
+				if (mitjanaClasse < 5) {
+					document.getElementById("comentario").innerHTML = "La nota mitjana de la classe està suspesa.<br>Els alumnes haurien de preguntar els seus dubtes i treballar més.";
+				} else if (mitjanaClasse < 7) {
+					document.getElementById("comentario").innerHTML = "La nota mitjana de la classe és bona però els alumnes haurien de millorar el treball personal";
+				} else {
+					document.getElementById("comentario").innerHTML = "Enhorabona! La nota mitjana de la classe es correspon amb l'esforç realitzat";
+				}
+		</script>
+	 </body>
+</html>	
