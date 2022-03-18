@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M4.Extra 1</title>
+      <meta charset='utf-8'>
+      <style>
+            body {font-family: sans-serif, Arial, Helvetica; margin-left: 5em;}
+            h1{color:#00008b; font-size: 130%;}
+            h2{color:#8b0000; font-size: 110%;}
+            p {margin-bottom: 0.5px;}
+            .enunciado {background-color: #eee; border-color: #000; padding: 0.5em; margin-right: 20em; font-size: 85%; color:##00008b;}
+            .ejercicio {margin-left: 2em;}
+      </style>
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1>Ejercicio M4.Extra 1</h1>
+      <div class="enunciado">
+            <p>Demana a l'usuari un número entre 0 i 99 i mostra'l escrit en lletres (pots fer-ho en català o castellà).</p>
+            <p>Exemple: 56 (cinquanta-sis) o 56 (cincuenta y seis)</p>
+      </div>
+      <div class="ejercicio">
+            <p><label for="dia">Escribe un número: </label>
+            <input id="numero" type="number" min=0 max=99 size="5"/></p>     
+            <p style="font-size: 85%; color:#f00;" id="decenas"></p>
+            <p style="font-size: 85%; color:#f00;" id="unidades"></p>
+            <p><input type='button' onClick='mostrar()' Value='Número a Letras' /></p>
+            <p id="letras"></p>
+      </div>
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script>
+         function mostrar() {
+            "use strict"; //Obligamos a definir las variables
+            let varNumero; // definimos las variables
+            varNumero = Number(document.getElementById("numero").value);
+
+            let decena = Math.trunc(varNumero/10);
+            document.getElementById("decenas").innerHTML = "decena " + decena;
+            
+            let unidad = Math.trunc(varNumero%10);
+            document.getElementById("unidades").innerHTML = "unidad " + unidad;
+            
+            let decenaLetra = "";
+		let unidadLetra = ""; 
+            let varLetra = "";
+            
+            switch (unidad) {
+			case 1: unidadLetra="uno"; break;
+			case 2: unidadLetra="dos"; break;
+			case 3: unidadLetra="tres"; break;
+			case 4: unidadLetra="cuatro"; break;
+			case 5: unidadLetra="cinco"; break;
+			case 6: unidadLetra="seis"; break;
+			case 7: unidadLetra="siete"; break;
+			case 8: unidadLetra="ocho"; break;
+			case 9: unidadLetra="nueve"; break;
+		}
+
+            switch (decena) {
+			case 1: decenaLetra="diez"; break;
+			case 2: decenaLetra="veinti"; break;
+			case 3: decenaLetra="treinta"; break;
+			case 4: decenaLetra="cuarenta"; break;
+			case 5: decenaLetra="cincuenta"; break;
+			case 6: decenaLetra="sesenta"; break;
+			case 7: decenaLetra="setenta"; break;
+			case 8: decenaLetra="ochenta"; break;
+			case 9: decenaLetra="noventa"; break;
+		}
+
+            if (varNumero == 0 || (varNumero > 10 && varNumero < 21)) { // entre 11 y 20			
+			switch (varNumero) {
+				case  0: varLetra = "cero"; break;
+				case 11: varLetra = "once"; break;
+				case 12: varLetra = "doce"; break;
+				case 13: varLetra = "trece"; break;
+				case 14: varLetra = "catorce"; break;
+				case 15: varLetra = "quince"; break;
+				case 16: varLetra = "dieciseis"; break;
+				case 17: varLetra = "diecisiete"; break;
+				case 18: varLetra = "dieciocho"; break;
+				case 19: varLetra = "diecinueve"; break;
+				case 20: varLetra = "veinte"; break;
+			}
+			
+		} else {		
+			if (decena <= 2 || unidad == 0 ) {
+				varLetra = decenaLetra;
+			} else {
+				varLetra = decenaLetra + " y ";
+			}
+			varLetra += unidadLetra;
+			
+		} // fin if numero
+
+            
+            //mostramos el resultado en el parrafo con id signo
+            document.getElementById("letras").innerHTML = "El numero en letras es:  <b>" 
+                  + varLetra +"</b>";                  
+
+         }
+      </script>
+    </body>
+</html>

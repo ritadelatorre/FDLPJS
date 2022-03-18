@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M4.6</title>
+      <meta charset='utf-8'>
+      <style>
+            body {font-family: sans-serif, Arial, Helvetica; margin-left: 5em;}
+            h1{color:#00008b; font-size: 130%;}
+            h2{color:#8b0000; font-size: 110%;}
+            p {margin-bottom: 0.5px;}
+            .enunciado {background-color: #eee; border-color: #000; padding: 0.5em; margin-right: 20em; font-size: 75%; color:#00008b; display:none;}
+            .ejercicio {margin-left: 2em;}
+      </style>
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1><input type="button" id="b1" value="+" onClick='desplegar("b1", "enunciado")'/> Ejercicio M4.6</h1>
+      <div id="enunciado">
+            <p>Fer un programa que demani a l’usuari quin dia i quin mes va néixer, amb aquesta informació el programa mostra per pantalla, de quin signe del zodíac és.</p>
+            <ul type="circle">
+                  <li>Àries - Aries (21.03 al 19.04)</li>
+                  <li>Taure - Tauro (20.04 al 20.05)</li>
+                  <li>Bessons - Géminis (21.05 al 20.06)</li>
+                  <li>Cranc - Cáncer (21.06 al 22.07)</li>
+                  <li>LLeó - Leo (23.07 al 22.08)</li>
+                  <li>Verge - Virgo (23.08 al 22.09)</li>
+                  <li>Balança - Libra (23.09 al 22.10)</li>
+                  <li>Escorpi - Escorpio (23.10 al 21.11)</li>
+                  <li>Sagitario - Sagitario (22.11 al 21.12)</li>
+                  <li>Capricorn - Capricornio (22.12 al 19.01)</li>
+                  <li>Aquari - Acuario (20.01 al 18.02)</li>
+                  <li>Peixos - Piscis (19.02 al 20.03)</li>
+            </ul>
+      </div>
+      <div class="ejercicio">
+            <p><label for="dia">Escribe tu dia de nacimiento: </label><input id="dia" type="number" min=1 max=31 size="5"/></p>     
+            <p><label for="mes">Escribe tu mes de nacimiento: </label><input id="mes" type="number" min=1 max=12 size="5"/></p>     
+            <p><input type='button' onClick='mostrar()' Value='Mostrar signo del zodíaco' /></p>
+            <p id="signo"></p>
+            <p><img id="imgSigno" src="./img/none.jpg" width="169px"/></p>
+      </div>
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script>
+         function mostrar() {
+            "use strict"; //Obligamos a definir las variables
+            let varMes, varDia, varSigno, varImagen // definimos las variables
+            varMes=Number(document.getElementById("mes").value);
+            varDia=Number(document.getElementById("dia").value);
+            
+            switch (varMes) {
+                  case  1: varSigno = (varDia <= 19) ? "Capricornio" : "Acuario"; break;
+                  case  2: varSigno = (varDia <= 18) ? "Acuario" : "Piscis"; break;
+                  case  3: varSigno = (varDia <= 20) ? "Piscis" : "Aries"; break;
+                  case  4: varSigno = (varDia <= 21) ? "Aries" : "Tauro"; break;
+                  case  5: varSigno = (varDia <= 20) ? "Tauro" : "Geminis"; break;
+                  case  6: varSigno = (varDia <= 20) ? "Geminis" : "Cancer"; break;
+                  case  7: varSigno = (varDia <= 22) ? "Cancer" : "Leo"; break;
+                  case  8: varSigno = (varDia <= 22) ? "Leo" : "Virgo"; break;
+                  case  9: varSigno = (varDia <= 22) ? "Virgo" : "Libra"; break;
+                  case 10: varSigno = (varDia <= 22) ? "Libra" : "Escorpio"; break;
+                  case 11: varSigno = (varDia <= 21) ? "Escorpio" : "Sagitario"; break;
+                  case 12: varSigno = (varDia <= 21) ? "Sagitario" : "Capricornio"; break;			
+            }
+            varImagen="./img/img" + varSigno + ".jpg";
+            //alert(varImagen);
+
+            //mostramos el resultado en el parrafo con id signo
+            document.getElementById("signo").innerHTML = "Tu signo del Zodíaco es <b>" + varSigno.toUpperCase() +"</b>";
+            document.getElementById("imgSigno").src = varImagen;
+
+         }
+         function desplegar(desde, parte){
+            let quien = document.getElementById(desde).value;
+
+            if (quien=='-') {
+                  document.getElementById(parte).style.display = 'none';
+                  document.getElementById(desde).value = '+';
+            } else {
+                  document.getElementById(parte).style.display = 'block';
+                  document.getElementById(desde).value = '-';
+            }
+         }
+      </script>
+    </body>
+</html>

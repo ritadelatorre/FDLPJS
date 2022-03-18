@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <meta charset='utf-8'>
+         <title>Ejercicio M4.1</title>
+    </head>
+    <body style="margin-left:10em;">
+      <h1>Ejercicio M4.1</h1>
+      <p>Modifica l’exercici 1 del mòdul 3. Un cop introduïdes les dades, el programa ha de mostrar el següent per pantalla:</p>
+      <ul>
+         <li>Si l’usuari té 18 anys o més: "Nom Cognom, ets MAJOR d’edat"</li> 
+         <li>Si l’usuari és menor de 18 anys: "Nom Cognom, ets MENOR d’edat".</li>
+      </ul>
+
+      <p><input type='button' onClick='mostrar()' Value='Comenzar' /></p>
+      
+      <p id="respuesta"></p>
+      
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script>
+         function mostrar() {
+            let respuesta = "";
+            let nombre = prompt("Escribe tu nombre: ", "");
+            respuesta += nombre + " "; 
+            let apellido = prompt("Escribe tu apellido: ", "");
+            respuesta += apellido + ", ";
+            let edad = Number(prompt("Escribe tu edad: ", ""));
+
+            if (edad >=18) {
+               respuesta += "eres MAYOR de edad";
+            } else {
+               respuesta += "eres MENOR de edad";
+            }
+
+            document.getElementById("respuesta").innerHTML = respuesta;
+
+         }
+      </script>
+    </body>
+</html>

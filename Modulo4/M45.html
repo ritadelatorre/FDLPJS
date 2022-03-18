@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M4.5</title>
+      <meta charset='utf-8'>
+      <style>
+            body {font-family: sans-serif, Arial, Helvetica; margin-left: 5em;}
+            h1{color:#00008b; font-size: 130%;}
+            h2{color:#8b0000; font-size: 110%;}
+            p {margin-bottom: 0.5px;}
+            .enunciado {background-color: #eee; border-color: #000; padding: 0.5em; margin-right: 20em; font-size: 85%; color:##00008b;}
+            .ejercicio {margin-left: 2em;}
+      </style>
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1>Ejercicio M4.5</h1>
+      <div class="enunciado">
+            <p>Fer un programa que demani dos números i un operador.</p> 
+            <p>Al final, el programa imprimeix per pantalla el resultat de fer l’operació que contingui la variable operador.</p>
+      </div>
+      <div class="ejercicio">
+            <p><label for="numero1">Escribe un número: &nbsp;</label><input id="numero1" type="number" size="5"/></p>        
+            <p><label for="numero2">Escribe otro número: </label><input id="numero2" type="number" size="5"/></p>
+
+            <p><label for="operacion">Elige un operador:</label>
+               <select id="operacion" name="operacion">
+                  <option value="+">sumar +</option>
+                  <option value="-">restar -</option>
+                  <option value="*">multiplicar *</option>
+                  <option value="/">dividir /</option>
+                  <option value="%">residuo %</option>
+               </select></p>       
+            
+            
+               <p><input type='button' onClick='mostrar()' Value='Calcular' /></p>
+            <p id="resultado"></p>
+            <p><a target="_blank" href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Math/round">
+                  redondear</a></p>
+      </div>
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script>
+         function mostrar() {
+            "use strict"; //Obligamos a definir las variables
+            let varOperacion, varNumero1, varNumero2, varResultado // definimos las variables
+            varOperacion = document.getElementById("operacion").value;
+
+            console.log("varOperacion = " + varOperacion);
+            
+            varNumero1 = Number(document.getElementById("numero1").value);
+            varNumero2 = Number(document.getElementById("numero2").value);
+
+            switch (varOperacion) {
+                  case "+":
+                        varResultado = varNumero1 + varNumero2;
+                        break;
+                  case "-":
+                        varResultado = varNumero1 - varNumero2;
+                        break;
+                  case "*":
+                        varResultado = varNumero1 * varNumero2;
+                        break;
+                  case "/":
+                        varResultado = Math.round(varNumero1 / varNumero2 * 100)/100;
+                        break;
+                  case "%":
+                        varResultado = varNumero1 % varNumero2;
+                        break;
+            }
+            
+            varResultado = varNumero1 + " " +  varOperacion + " " + varNumero2 + " = " + varResultado;
+
+            //mostramos el resultado en el parrafo con id resultado
+            document.getElementById("resultado").innerHTML = varResultado;                  
+
+         }
+      </script>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M4.6</title>
+      <meta charset='utf-8'>
+      <style>
+            body {font-family: sans-serif, Arial, Helvetica; margin-left: 5em;}
+            h1{color:#00008b; font-size: 130%;}
+            h2{color:#8b0000; font-size: 110%;}
+            p {margin-bottom: 0.5px;}
+            .enunciado {background-color: #eee; border-color: #000; padding: 0.5em; margin-right: 20em; font-size: 75%; color:#00008b; display:none;}
+            .ejercicio {margin-left: 2em;}
+      </style>
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1>Ejercicio M4.6</h1>
+      <div class="enunciado">
+            <p>Fes un programa que pregunti a l'usuari dos nombres enters al qual anomenaràs dividend i divisor respectivament.</p>
+            <p>El divisor haurà d'estar comprès entre 2 i 7.</p>
+            <p>En cas contrari, el programa haurà de mostrar un missatge d'error.</p>
+            <p>Si el divisor és correcte (2-7) mostra en pantalla si el dividend és múltiple del divisor, o no.</p>
+      </div>
+      <div class="ejercicio">
+            <p>Dividend: </label><input id="dividendo" type="number" size="5"/></p>     
+            <p>Divisor: </label><input id="divisor" type="number" min=2 max=7 size="5"/></p>     
+            <p><input type='button' onClick='mostrar()' Value='Calcular' /></p>
+            <p id="resultado"></p>
+      </div>
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script>
+         function mostrar() {
+            
+            let dividendo = parseInt(document.getElementById("dividendo").value);
+            let divisor = parseInt(document.getElementById("divisor").value);
+            let resultado = dividendo
+            if (divisor ==='' || divisor === null || isNaN(divisor) || divisor< 2 || divisor>7 ) {
+                  document.getElementById("resultado").innerHTML="Escriba un número entero entre 2 y 7";
+            } else {
+                  resultado += (dividendo % divisor == 0) ? " es múltiplo de " + divisor : " no es múltiplo de " + divisor;                        
+                  document.getElementById("resultado").innerHTML = resultado;
+            }
+         }
+
+      </script>
+    </body>
+</html>

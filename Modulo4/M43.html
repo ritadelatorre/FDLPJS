@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M4.3</title>
+      <meta charset='utf-8'>
+      <style>
+            body {font-family: sans-serif, Arial, Helvetica; margin-left: 5em;}
+            h1{color:#00008b; font-size: 130%;}
+            h2{color:#8b0000; font-size: 110%;}
+            p {margin-bottom: 0.5px;}
+            .enunciado {background-color: #eee; border-color: #000; padding: 0.5em; 
+                  margin-right: 10em; font-size: 85%; color:#00008b;}
+            .ejercicio {margin-left: 2em;}
+            .chica {font-size: 80%; color: red;}
+      </style>
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1>Ejercicio M4.3</h1>
+      <div class="enunciado">
+            <p>Una escola d’idiomes concedeix beques a futurs estudiants si compleixen una sèrie de requisits.</p>
+            <p>A l'alumne se li assigna una beca <b>si és major d’edat</b> i <b>si té un títol universitari</b>. 
+            O <b>també</b> se li assigna una beca <b>si l’alumne està a l’atur</b>.</p> 
+            <p>El programa demana les tres dades per pantalla i en finalitzar mostra si l’alumne té la beca o no.</p>
+      </div>
+      <div class="ejercicio">
+            <p>Nombre completo: <input type="text" size="50" id="nombre" placeholder="Escribe tu nombre completo"/></p>
+            <p>Edad: <input type="number" size="5" min="1" max="99" id="edad" placeholder="Edad"/></p>
+
+            <p>¿Tienes título universitario?
+            <!-- id para referenciar el elemento en JavaScript o CSS, 
+                 name para hacer una opción parte de un conjunto que se llame igual 
+                 label es el título del botón 
+                 value es el valor que toma el botón de radio -->  
+            <input type="radio" id="titulo1" name="titulo" value="s"><label>Sí</label>
+             <span class="chica">Yo me llamo titulo1 y mi valor (value) es s</span>
+
+            <input type="radio" id="titulo2" name="titulo" value="n"><label>No</label>
+            <span class="chica">Yo me llamo titulo2 y mi valor (value) es n</span></p>
+
+            <p>¿Estás en el paro? 
+            <input type="radio" id="paro1" name="paro" value="s"><label>Sí</label>
+            <input type="radio" id="paro2" name="paro" value="n"><label>No</label></p>
+            
+            <p><input type='button' onClick='mostrar()' Value='Resultado Beca' /></p>
+            <h2>Resultado del trámite:</h2>
+            <p id="resultado"></p>
+      </div>
+
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      
+      <script>
+         function mostrar() {
+            "use strict"; // Obligamos a definir las variables
+            let varNombre, varEdad, varTitulo, varParo, varResultado // definimos las variables
+
+            // asignamos los valores de las respuestas a las variables
+            varNombre = document.getElementById("nombre").value;
+            varEdad = document.getElementById("edad").value;
+
+            if (document.getElementById("titulo1").checked) {
+                  varTitulo= document.getElementById("titulo1").value; // "s"   
+            } else {
+                  varTitulo= document.getElementById("titulo2").value; // "n"
+            }
+
+            if (document.getElementById("paro1").checked) {
+                  varParo= document.getElementById("paro1").value; // "s"  
+            } else {
+                  varParo= document.getElementById("paro2").value; // "n"
+            }
+            
+            // mostramos los valores en la consola para depurar (mirar que valores han cogido las variables)
+            // recordar que la consola se accede desde Chrome con la tecla F12
+
+            console.log("varEdad = " + varEdad);
+            console.log("varTitulo = "  + varTitulo);
+            console.log("varParo = " + varParo);
+            
+            // hacemos la comprobacion para ver si hay beca
+
+            if ((varEdad>=18 && varTitulo=='s') || varParo =='s') {
+                  varResultado = ": Beca CONCEDIDA." ;
+            } else {
+                  varResultado = ": Beca NO CONCEDIDA.";                  
+            }
+
+            //mostramos el resultado en el parrafo con id resultado
+            document.getElementById("resultado").innerHTML = "<strong>"  + varNombre.toUpperCase() + "</strong>" +  varResultado;                  
+
+         }
+      </script>
+    </body>
+</html>
