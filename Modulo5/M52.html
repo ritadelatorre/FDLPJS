@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M5.2</title>
+      <meta charset='utf-8'>
+      <style>
+            body {font-family: sans-serif, Arial, Helvetica; margin-left: 5em;}
+            h1{color:#00008b; font-size: 130%;}
+            h2{color:#8b0000; font-size: 110%;}
+            p {margin-bottom: 0.5px;}
+            #b1{width:0.2em; height:1em; background-color: brown; color: brown; }
+            #enunciado {background-color: #eee; border-color: #000; padding: 0.5em; margin-right: 20em; font-size: 85%; color:#00008b; display:block;}
+            .ejercicio {margin-left: 2em;}
+      </style>
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1><input type="button" id="b1" value="-" onClick='desplegar("b1", "enunciado")'/> Ejercicio M5.2</h1>
+      <div id="enunciado">
+            <p>El programa demana dos números enters i llavors calcula la suma dels valors compresos entre els dos números, inclosos.</p> 
+            <p>Exemple: 4 i 6  --> resultat = <b>4 + 5 + 6 = 15</b></p>
+      </div>
+      <div class="ejercicio">
+            <p><label for="numero1">Número 1: &nbsp;</label>
+               <input id="numero1" type="number" min="1" max="10" size="5"/></p>        
+            <p><label for="numero2">Número 2: &nbsp;</label>
+               <input id="numero2" type="number" min="1" max="10" size="5"/></p>        
+
+            <p><input type='button' onClick='mostrar()' Value='Calcular suma' /></p>
+            <p><b>Resultado</b> = <span id="resultado"></span></p>
+      </div>
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script>
+         function mostrar() {
+            "use strict"; //Obligamos a definir las variables
+            let numeroDesde = Number(document.getElementById("numero1").value);
+            let numeroHasta = Number(document.getElementById("numero2").value);
+            let numSuma = numeroDesde;
+            let contenido = numeroDesde;
+
+            for (let i=numeroDesde + 1; i<=numeroHasta; i++) {                  
+                  contenido += " + " + i;
+                  numSuma += i;
+            }
+            contenido += " = " + numSuma;
+
+            //mostramos el resultado en el parrafo con id resultado
+            document.getElementById("resultado").innerHTML = contenido;                  
+
+         }
+         function desplegar(desde, parte){
+            let quien = document.getElementById(desde).value;
+
+            if (quien=='-') {
+                  document.getElementById(parte).style.display = 'none';
+                  document.getElementById(desde).value = '+';
+            } else {
+                  document.getElementById(parte).style.display = 'block';
+                  document.getElementById(desde).value = '-';
+            }
+         }
+      </script>
+    </body>
+</html>
