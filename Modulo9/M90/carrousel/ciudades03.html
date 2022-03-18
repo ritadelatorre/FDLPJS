@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Carrousel</title>
+        <link href="./css/estilos.css" rel="stylesheet">        
+    </head>
+
+    <body>
+        <header id="menu">
+            <p>
+            <button class='btn_menu' onClick='agregar()'>AGREGAR</button>
+            <button class='btn_menu' onClick='buscar()'>BUSCAR</button>
+            <button class='btn_menu' onClick='eliminar()'>ELIMINAR</button>
+            <button class='btn_menu' onClick='modificar()'>MODIFICAR DATOS</button>
+            <button class='btn_menu' onClick='terminar()'>SALIR</button>
+            </p>
+        </header>
+
+        <div id="container">
+            <h1>Ciudades favoritas
+                <button id="play" class='repro' onclick='play()'>
+                    <img alt="play" title="play" src="./icons/play.png"/></button>
+                <button id="stop" class='repro' style="display: none;" onclick='stop()'>
+                    <img alt="stop" title="stop" src="./icons/stop.png"/></button>
+            </h1>
+            <p><img id="imagen" title='' alt='' src=""></p>
+            <p> <input type="button" id="atras" onclick="retroceder()" value="Retroceder"/>
+                <span id="nombreImagen"></span>
+                <input type="button" id="adelante" onclick="avanzar()" value="Avanzar"/>
+            </p>
+
+            <p id="desc"></p>
+        </div>
+        <script>"use strict;"</script>
+        <script src="./js/imagenes.js"></script>
+        <script src="./js/carrousel.js"></script>
+        <script src="./js/operaciones.js"></script>
+    </body>
+</html>

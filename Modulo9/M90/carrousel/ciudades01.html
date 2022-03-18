@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Carrousel</title>
+        <link href="./css/estilos.css" rel="stylesheet">        
+    </head>
+    <body>
+        <div id="container">
+            <h1>Ciudades favoritas</h1>
+            <p><input type="button" onclick="agregar()" value="Agregar ciudad"/></p>
+            <p><img id="imagen" title='' alt='' src="./img/barcelona.jpg"></p>
+            <p> <input type="button" onclick="retroceder()" value="Retroceder"/>
+                <span id="nombreImagen"></span>
+                <input type="button" onclick="avanzar()" value="Avanzar"/>
+            </p>
+            <p id="desc"></p>
+        </div>
+        <script>"use strict;"</script>
+        <script src="./js/imagenes.js"></script>
+        <script src="./js/carrousel.js"></script>
+        <script src="./js/operaciones.js"></script>
+    </body>
+</html>

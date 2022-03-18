@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrousel</title>
+    <link href="./css/estilos.css" rel="stylesheet">
+</head>
+<body>
+    <div id="container">
+        <h1>Ciudades favoritas</h1>
+        <p><img id="imagen" title='Ciudad de España' alt='barcelona.jpg' src="./img/barcelona.jpg"></p>
+        <p> <button id="retroceder" onclick="retrocederFoto()">Retroceder</button>
+            <span id="nombreImagen"></span>
+            <button  id="avanzar" onclick="pasarFoto()">Avanzar</button>
+        </p>
+    </div>
+    <script>
+        // Variables
+        const RUTA='./img/';
+        const imagenes = [
+            'barcelona.jpg',
+            'paris.jpg',
+            'newyork.jpg',
+            'sidney.jpg',
+            'londres.jpg',
+            'auckland.jpg'
+        ];
+
+        let posicionActual = 0;
+        mostrarImagen();        
+        // Funciones
+
+        /**
+            * Funcion que actualiza la imagen de imagen dependiendo de posicionActual
+            */
+            function mostrarImagen () {
+            let imagen = RUTA + imagenes[posicionActual]; 
+            document.getElementById('imagen').src = imagen;
+            document.getElementById('nombreImagen').innerHTML = imagenes[posicionActual];
+        }
+
+
+        function pasarFoto() {
+            if(posicionActual >= imagenes.length - 1) {
+                posicionActual = 0;
+            } else {
+                posicionActual++;
+            }
+            mostrarImagen();
+        }
+
+        /**
+            * Funcion que cambia la foto en la anterior posicion
+            */
+        function retrocederFoto() {
+            if(posicionActual <= 0) {
+                posicionActual = imagenes.length - 1;
+            } else {
+                posicionActual--;
+            }
+            mostrarImagen();
+        }
+
+    </script>
+</body>
+</html>
