@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <meta charset='utf-8'>
+         <title>Ejercicio M3.1</title>
+    </head>
+    <body style="margin-left:10em;">
+      <!--Esto es HTML-->
+      <h1>Ejercicio M3.1</h1>
+      <p>Fer un programa que li demani a l’usuari mitjançant el prompt: El nom, el cognom i l’edat de l’usuari.<br>Un cop l’usuari hagi acabat d’introduir les dades, aquestes s’han de mostrar per consola, amb un popup i mitjançant getElementById().</p>
+
+      <p><input type='button' onClick='mostrar()' Value='Mostrar' /></p>
+      
+      <p>Tus Respuestas:</p>
+      <p>Tu nombre: <strong><span id="nom"></span></strong></p> 
+      <p>Tu apellido: <strong><span id="cognom"></span></strong></p> 
+      <p>Tu edad: <strong><span id="edat"></span></strong></p> 
+      
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script>
+         function mostrar() {
+            let respuesta = "";
+            let nombre = prompt("Escribe tu nombre: ", "");
+            respuesta += "Tu nombre " + nombre + "\n"; 
+            let apellido = prompt("Escribe tu apellido: ", "");
+            respuesta += "Tu apellido " + apellido + "\n";
+            let edad = prompt("Escribe tu edad: ", "");
+            respuesta += "Tu edad " + edad + "\n";
+
+            // por consola:
+            console.clear;
+            console.log("Tu nombre: ", nombre);
+            console.log("Tu apellido: ", apellido);
+            console.log("Tu edad: ", edad);
+
+            //con un popup (alert)
+            alert(respuesta);
+
+            //mediante getElementById
+            document.getElementById("nom").innerHTML = nombre;
+            document.getElementById("cognom").innerHTML = apellido;
+            document.getElementById("edat").innerHTML = edad;
+         }
+      </script>
+    </body>
+</html>

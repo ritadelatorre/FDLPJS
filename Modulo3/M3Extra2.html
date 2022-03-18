@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <meta charset='utf-8'>
+         <title>Ejercicio M3 Extra 2</title>
+    </head>
+    <body style="margin-left: 10em;">
+      <!--Esto es HTML-->
+      <h1>Ejercicio M3 Extra 2</h1>
+      <p>Escriu un programa JavaScript que calculi els litres de pintura necessaris per a pintar una paret rectangular.</p>
+      <p>Un litre de pintura cobreix aproximadament, 12m2 en una sola mà.</p>
+      <p>Crea una constant anomenada <b>coberturaLitre</b> per a guardar la dada de cobertura de la pintura (12m2)</p>
+      <p>Hauràs de demanar a l'usuari:</p>
+      <ul>
+        <li>L'alt i ample de la paret ( multiplicant sabràs l'àrea de la mateixa )</li>
+        <li>El nombre de mans a aplicar</li>
+      </ul>
+      <p>Mostra en pantalla els litres de pintura a utilitzar.</p>
+
+      <hr>
+      <p>Alt de la paret: <input type="text" id="alt"/></p>
+      <p>Ample de la paret: <input type="text" id="ample"/></p>
+      <p>Nombre de mans a aplicar: <input type="text" id="mans"/></p>
+      <p><input type='button' onClick='mostrar()' Value='Calcular' /></p>
+      
+
+      <p id="resultado">El párrafo suma sin resultado</p> 
+      
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script>
+         function mostrar() {
+               const COBERTURA_LITRE = 12;
+               let alt = Number(document.getElementById("alt").value); 
+               let ample = Number(document.getElementById("ample").value);
+               let mans = Number(document.getElementById("mans").value);
+               let area = ample * alt * mans;
+               let litres = area / COBERTURA_LITRE;
+               
+               document.getElementById("resultado").innerHTML = "Litres de pintura a utilitzar: " + (litres);
+
+         }
+      </script>
+    </body>
+</html>

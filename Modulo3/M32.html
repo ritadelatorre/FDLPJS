@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <meta charset='utf-8'>
+         <title>Ejercicio M3.2</title>
+    </head>
+    <body style="margin-left: 10em;">
+      <!--Esto es HTML-->
+      <h1>Ejercicio M3.2</h1>
+      <p>Fer un programa que li demani dos números enters  a l’usuari. Al final, el programa imprimeix per pantalla el següent missatge:</p>
+      <ul>
+        <li>El resultat de la suma és: “valor”</li>
+        <li>El resultat de la resta és: “valor”</li>
+        <li>El resultat de la multiplicació és: “valor”</li>
+        <li>El resultat de la divisió és: “valor”</li>
+      </ul>
+      <hr>
+      <p>Introduce un número: <input type="text" id="numero1" placeholder="La cajita se llama numero1"/></p>
+      <p>Introduce otro número: <input type="text" id="numero2" placeholder="La cajita se llama numero2"/></p>
+      <p><input type='button' onClick='mostrar()' Value='Aritmética' /></p>
+      
+      <h2>Resultados</h2>
+      <p id="suma">El párrafo suma sin resultado</p> 
+      <p id="resta">El párrafo resta sin resultado</p> 
+      <p id="multiplicacion">El párrafo multiplicacion sin resultado</p> 
+      <p id="division">El párrafo division sin resultado</p> 
+      
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script>
+         function mostrar() {
+               let num1 = Number(document.getElementById("numero1").value); 
+               let num2 = Number(document.getElementById("numero2").value);
+               
+               document.getElementById("suma").innerHTML = "El resultat de la suma és: " + (num1 + num2);
+               document.getElementById("resta").innerHTML = "El resultat de la resta és: " + (num1 - num2);
+               document.getElementById("multiplicacion").innerHTML = "El resultat de la multiplicació és: " + (num1 * num2);
+               document.getElementById("division").innerHTML = "El resultat de la divisió és: " + (num1 / num2);
+         }
+      </script>
+    </body>
+</html>

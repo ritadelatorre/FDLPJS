@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <meta charset='utf-8'>
+         <title>Ejercicio M3 Extra 1</title>
+    </head>
+    <body style="margin-left: 10em;">
+      <!--Esto es HTML-->
+      <h1>Ejercicio M3 Extra 1</h1>
+      <p>Escriu un programa JavaScript que llegeix un <strong>nombre</strong> i mostra per pantalla el doble i el triple d'aquest número.</p>
+      <hr>
+      <p>Introduce un número: <input type="number" id="numero"/></p>
+      <p><input type='button' onClick='mostrar()' Value='Mostrar' /></p>
+      
+      <p id="doble"></p> 
+      <p id="triple"></p> 
+      
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script>
+         function mostrar() {
+               let numero = Number(document.getElementById("numero").value); 
+               
+               document.getElementById("doble").innerHTML = "El doble del número es: " + (numero * 2);
+               document.getElementById("triple").innerHTML = "El triple del número es: " + (numero * 3);
+
+         }
+      </script>
+    </body>
+</html>
