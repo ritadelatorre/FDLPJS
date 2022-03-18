@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M81. Classe Ordinador</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1><input type="button" id="b1" value="+" onClick='desplegar("b1", "enunciado")'/> Ejercicio 8.1</h1>
+      <div id="enunciado" style="display: none;">
+            <p>Crea una classe en JavaScript anomenada "Ordinador", en un fitxer anomenat <b>ordinador.js</b></p>
+            <p>Aquesta classe tindrà com a atributs la marca, el model, el processador, la quantitat de memòria RAM i la capacitat del disc dur.</p>
+            <p>A més del constructor, ha de disposar dels següents mètodes:</p>
+            <ul>                  
+                  <li>mètodes que permetin consultar cadascun dels atributs</li>
+                  <li>mètodes que permetin modificar el <em>processador</em>, la quantitat de <em>memòria</em> ram i la capacitat del <em>disc dur</em></li>
+                  <li>un mètode que rebrà un paràmetre i retornarà un frase que digui:<br>
+                  <em>"En aquests moments s'està executant: 'X'" </em><br>
+                  (X és el paràmetre rebut pel mètode i que normalment serà el nom d'un programa)<br>
+                  <i>Exemple:</i><em>"En aquests moments s'està executant: Chrome"</em></li>
+                  <li>un mètode que retornarà una descripció completa de l'ordinador (<b>toString()</b>).</li>
+            </ul>
+            <p>En un altre fitxer anomenat <b>main.js</b>, crea un botó que cridi a la funció <b>crearOrdinadors()</b>.</p>
+            <p>Dintre d'aquesta funció, demanarem a l'usuari mitjançant promtps les dades de dos ordinadors.</p> 
+            <p>Un cop introduïdes les dades dels dos ordinadors, crida als mètodes de la classe <b>Ordinador</b> per comprovar que funcionen correctament.</p>
+      </div>
+      <div class="ejercicio">
+            <h1>Clase Ordenador</h1>
+            <p><input type="button" onclick='crearOrdenadores()' value="Crea ordenadores"/>
+            <div id="o1" style="display: none;">
+                  <h2>DATOS DEL ORDENADOR 1</h2> 
+                  <ul>
+                        <li><strong>Marca: </strong><b><span id="marca1"></span></b></li>
+                        <li><strong>Modelo: </strong><b><span id="modelo1"></span></b></li>
+                        <li><button onclick='cambiarCpu(1, ordenador1)'>cambiar</button>&nbsp;
+                        Procesador: <b><span id="cpu1"></span></b></li>
+                        <li><button onclick='cambiarMemoria(1, ordenador1)'>cambiar</button>&nbsp;
+                        Memoria: <b><span id="memoria1"></span></b></li>
+                        <li><button onclick='cambiarDisco(1, ordenador1)'>cambiar</button>&nbsp;
+                        Disco Duro: <b><span id="disco1"></span></b></li>
+                        <li><button onclick='ejecutarPrograma(1, ordenador1)'>Ejecutar programa</button>&nbsp;
+                        <em><span id="programa1"></span></em></li>                  
+                  </ul>
+            </div>
+            <div id="o2" style="display: none;">
+                  <h2>DATOS DEL ORDENADOR 2</h2>
+                  <ul>
+                        <li><strong>Marca: </strong><b><span id="marca2"></span></b></li>
+                        <li><strong>Modelo: </strong><b><span id="modelo2"></span></b></li>
+                        <li><button onclick='cambiarCpu(2, ordenador2)'>cambiar</button>&nbsp;
+                        Procesador: <b><span id="cpu2"></span></b></li>
+                        <li><button onclick='cambiarMemoria(2, ordenador2)'>cambiar</button>&nbsp;
+                        Memoria: <b><span id="memoria2"></span></b></li>
+                        <li><button onclick='cambiarDisco(2, ordenador2)'>cambiar</button>&nbsp;
+                        Disco Duro: <b><span id="disco2"></span></b></li>
+                        <li><button onclick='ejecutarPrograma(2, ordenador2)'>Ejecutar programa</button>&nbsp;
+                        <em><span id="programa2"></span></em></li>                  
+                  </ul>
+            </div>
+      </div>
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script src="./js/Ordenador.js"></script>
+      <script src="./js/main.js"></script>
+
+    </body>
+</html>
