@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Circles</title>
+    <meta name="description" content="A program to calculate some relationships between two circles.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="./css/estilos.css">
+</head>
+
+<body>
+    <header>
+        <h1>Ejercicio 8.5 - Círculos</h1>
+    </header>
+    
+    <main>
+	<div class="input">             
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Centro (x)</th>
+                    <th>Centro (y)</th>
+                    <th>Radio</th>
+                </tr>
+                <tr>
+                    <td><strong>Círculo&nbsp;1</strong></td>
+                    <td><input type="number" id="x1" value="3"></td>
+                    <td><input type="number" id="y1" value="2"></td>
+                    <td><input type="number" id="r1" min="1" value="5"></td>
+                </tr>
+                <tr>
+                    <td><strong>Círculo&nbsp;2</strong></td>
+                    <td><input type="number" id="x2" value="2"></td>
+                    <td><input type="number" id="y2" value="7"></td>
+                    <td><input type="number" id="r2" value="3" min="1"></td>
+                </tr>
+            </table>        
+            <button id="button" onclick="calcular()"> Calcular y dibujar círculos </button>
+        </div>
+        
+        <div class="result">
+            <ul id="text">
+		</ul>
+            <canvas id="graph" width="270" height="270">Representation of the circles on a cartesian plane.</canvas>
+        </div>
+	</main>
+	<hr>
+	<footer>		
+            <p><mark>Calcular <a target="_blank" href="https://miniwebtool.com/es/distance-between-two-points-calculator/">distancia</a> 
+		entre dos puntos.</mark> Original desarrollado por Darío Scattolini &copy; 2019 - 
+                <a href="https://choosealicense.com/licenses/mit/" target="_blank" 
+                title="Find out more about MIT Licences">MIT License</a>
+            </p>
+	</footer>
+	<script src="./js/clases.js"></script>
+	<script src="./js/circulos.js"></script>
+
+</body>
+
+</html>
