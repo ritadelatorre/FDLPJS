@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M83. Banco</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <header id="menu">
+            <button class="nero" onClick='mostrar(0)'>ENUNCIADO</button>
+            <button class="rosa" onClick='mostrar(1)'>CREAR</button>
+            <button class="rosa" onClick='mostrar(2)'>ELIMINAR</button>
+            <button class="azul" onClick='mostrar(3)'>CREAR CUENTA</button>
+            <button class="azul" onClick='mostrar(4)'>INGRESAR EUROS</button>
+            <button class="azul" onClick='mostrar(5)'>RETIRAR EUROS</button>
+            <button class="nero" onClick='mostrarClientes()'>LISTA CLIENTES</button>
+            <button onClick='terminar()'>SALIR</button>
+      </header>
+      <div id="container">
+            <div id="buscaCliente" class="cuerpo" style="display: none;">
+                  <label for="clienteBuscar">&nbsp;Indique el número del DNI :</label>
+                  <input id="clienteBuscar" type="text" value="55555555K"/>
+                  <input id="opcion" type="hidden" value="0"/>
+                  <input type='button' onClick='buscarCliente()' Value='continuar' />
+            </div>
+
+
+            <div id="enunciado" class="cuerpo">
+                  <h1>Ejercicio M83. GESTIÓN DE CUENTAS BANCARIAS</h1>
+                  <p>Programa una aplicació que tingui programades totes les opcions del següent menú:</p>
+                  <ol>
+                        <li>Sortir de l'aplicació</li>
+                        <li>Crear client</li>
+                        <li>Eliminar client</li>
+                        <hr>
+                        <li>Crear compta d'un client</li>
+                        <li>Ingresar euros en una compta d'un client</li>
+                        <li>Retirar euros en una compta d'un client</li>
+                  </ol>
+                  <button class="rosa" onclick="pruebaClaseCliente()">PROBAR CLASE CLIENTE</button>
+                  <p>A tenir en compte (al crear las cuentas):</p>
+                  <ul>
+                        <li>El saldo inicial de totes les comptes ha de ser 0€</li>
+                        <li>Al crear un client, no haurà de tenir cap compte "associada"</li>
+                        <li>El diagrama UML mostrà les propietats i mètodes mínims que han de tenir les classes, però pots crear-ne més si és necessari.</li>
+                        <p><img width="40%" src="banco.jpg" alt="uml" title="Diagrama UML"/></p>
+                        
+                  </ul>
+            </div>
+            <div id="datos" class="cuerpo" style="display: none;">
+                  <h1 id="titulo">CLIENTE</h1>
+                  <form id="info">
+                  <fieldset id="campos" disable="true">
+                        <p>
+                              <label for="fldDNI" class="nombreCampo">Documento de Identidad:</label>
+                              <input id="fldDNI" type="text"/>
+                        </p>
+                        <p>
+                              <label for="fldNombre" class="nombreCampo">Nombre:</label>
+                              <input id="fldNombre" type="text" value=""/>
+                        </p>
+                        <p>
+                              <label for="fldApellidos" class="nombreCampo">Apellidos :</label>
+                              <input id="fldApellidos" type="text" value=""/>
+                        </p>
+                  </fieldset>
+                  </form>
+                  <p>
+                  <button id="1" style="display: none" onClick='registrarCliente()'>Registrar Cliente</button> 
+                  <button id="2" style="display: none" onClick='eliminarCliente()' >Dar de Baja al Cliente</button> 
+                  </p>
+                  <h2 id="mensaje"></h2> 
+            </div>
+            <div id="buscaCuenta" class="cuerpo" style="display: none;">
+                  <label for="cuentaBuscar">&nbsp;Indique el número de cuenta :</label>
+                  <input id="cuentaBuscar" type="text" value="123"/>
+                  <input id="opcionCuenta" type="hidden" value="0"/>
+                  <input type='button' onClick='buscarCuenta()' Value='continuar' />
+            </div>
+            <div id="lista" style="display: none;" class="cuerpo">
+                  <h1>LISTADO DE CLIENTES</h1>
+                  <ul id="listado">
+                  
+                  </ul>
+            </div>
+            
+            <div id="salida" style="display: none;" class="cuerpo">
+                  <h1>SALIR DEL PROGRAMA</h1>
+                  <p>Hasta la vista, baby</p>
+            </div>
+      </div>
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script src="./js/Cuenta.js"></script>
+      <script src="./js/Cliente.js"></script>
+      <script src="./js/ventanas.js"></script>
+      <script src="./js/domCreate.js"></script>
+      <script src="./js/main.js"></script>
+    </body>
+</html>
