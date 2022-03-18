@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M82. Hotels</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <header id="menu">
+            <button class="nero" onClick='mostrar(0)'>ENUNCIADO</button>
+            <button onClick='mostrar(1)'>REGISTRAR HOTEL</button>
+            <button onClick='mostrar(2)'>DAR DE BAJA A HOTEL</button>
+            <button onClick='mostrar(3)'>VER DATOS DEL HOTEL</button>
+            <button onClick='mostrar(4)'>MODIFICAR DATOS DEL HOTEL</button>
+            <!-- <button onClick='pruebaHotel()'>PRUEBA CLASE</button> -->
+            <button onClick='terminar()'>SALIR DEL PROGRAMA</button>
+      </header>
+      <div id="container">
+            <div id="buscaHoteles" class="cuerpo">
+                  <label for="hotelBuscar">&nbsp;Nombre del hotel :</label>
+                  <input id="hotelBuscar" type="text" value="Hilton Inn"/>
+                  <input id="opcion" type="hidden" value="0"/>
+                  <input type='button' onClick='buscarHotel()' Value='continuar' />
+            </div>
+            <div id="enunciado" class="cuerpo">
+                  <h1>Ejercicio M82. Hotels</h1>
+                  <p>Ens demanen crear una aplicació per donar d’alta, modificar, veure i eliminar hotels. 
+                   <b>Treballarem amb arrays d'objectes i classes</b>.</p>
+                  <p>La <b>classe Hotel</b> haurà de tenir els següents <b>atributs</b> <em>nom, nombre d’habitacions, nombre de plantes i superfície total de l’hotel</em>. Com a <b>mètodes</b> només haurà de tenir els <em>getters i setters</em> propis de la classe <b>i</b> un mètode anomenat <em>calcularManteniment()</em>. Aquest mètode ha de tenir en compte que <i>cada persona del servei pot atendre 20 habitacions i haurà de mostrar quantes persones són necessàries per atendre el servei d’habitacions de l’hotel i quin és el cost total destinat al servei sabent que aquestes persones cobren 1.500€ al mes</i>.</p> 
+                  <ul>      
+                  <li>La funció <b>crearHotel()</b> haurà de demanar a l’usuari que introdueixi per pantalla les dades de nom, nombre d’habitacions, nombre de plantes i superfície total de l’hotel (o haurà de rebre aquestes dades per paràmetre). Un cop hagi demanat totes aquestes dades, s’ha d’instanciar l’objecte de la classe i afegir-lo a un array d’hotels.</li>
+                        
+                  <li>La funció <b>donarDeBaixaHotel()</b> haurà de rebre el nom de l'hotel que es vol donar de baixa. L’usuari introduirà el nom de l’hotel i si l’hotel està dintre de l’array, l’eliminarem i mostrarem un missatge per pantalla informant l’usuari que hem eliminat l’hotel. Si no hem trobat l’hotel dintre de l’array, avisarem l’usuari dient que l’hotel no estava dintre de la nostra aplicació.</li>
+                        
+                  <li>La funció <b>veureHotel()</b> haurà de rebre el nom de l'hotel que vol que mostrem per pantalla, si l’hotel està a la nostra aplicació, li mostrarem l’hotel, si no hi és, informarem l’usuari dient que l’hotel que ens ha demanat no està dintre de la nostra aplicació.<br>
+                  Quan mostrem l’hotel, a més, de mostrar el nombre d’habitacions, nombre de plantes i superfície total de l’hotel també es cridarà al mètode <em>calcularManteniment()</em>.</li>
+                        
+                  <li>La funció <b>modificarHotel()</b> haurà de rebre el nom de l'hotel que volem modificar. L’usuari introduirà el nom de l’hotel. Si el tenim a l’aplicació, li demanarem si vol modificar el nombre d’habitacions, el nombre de plantes o la superfície total de l’hotel. Farem la modificació pertinent i avisarem a l’usuari que la modificació s’ha realitzat.</li> 
+                  </ul>
+            </div>
+            <div id="datosHotel" class="cuerpo" style="display: none;">
+                  <h1 id="titulo">REGISTRAR HOTEL</h1>
+                  <form id="infoHotel">
+                  <fieldset id="campos" disable="true">
+                        <p>
+                              <label for="nombreHotel" class="nombreCampo">Nombre del hotel :</label>
+                              <input id="nombreHotel" type="text"/>
+                        </p>
+                        <p>
+                              <label for="habitaciones" class="nombreCampo">Número de Habitaciones :</label>
+                              <input id="habitaciones" type="number" value=""/>
+                        </p>
+                        <p>
+                              <label for="plantas" class="nombreCampo">Número de plantas :</label>
+                              <input id="plantas" type="number" value=""/>
+                        </p>
+                        <p>
+                              <label for="superficie" class="nombreCampo">Superficie m2 :</label>
+                              <input id="superficie" type="text" value=""/>
+                        </p>
+                        <p id="mantenimiento">-</p>
+                  </fieldset>
+                  </form>
+                  <p>
+                  <button id="1" style="display: none" onClick='registrarHotel()'>Registrar el Hotel</button> 
+                  <button id="2" style="display: none" onClick='eliminaHotel()' >Dar de Baja al Hotel</button> 
+                  <button id="4" style="display: none" onClick='modificaHotel()'>Aplicar cambios</button>
+                  </p>
+                  <h2 id="mensaje"></h2> 
+            </div>
+            <div id="salida" style="display: none;" class="cuerpo">
+                  <h1>SALIR DEL PROGRAMA</h1>
+                  <p>Hasta la vista, baby</p>
+            </div>
+      </div>
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script src="./js/main.js"></script>
+      <script src="./js/ventanas.js"></script>
+      <script src="./js/Hotel.js"></script>
+    </body>
+</html>
