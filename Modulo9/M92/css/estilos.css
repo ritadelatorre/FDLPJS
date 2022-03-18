@@ -1,1 +1,56 @@
+body {
+   margin: 0 auto;
+   font-size: 11pt;
+   font-family: 'Open sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   padding: 0 10em 5em 5em;
+}
+div {padding-left: 1em;}
+header {
+   position: fixed; 
+   top: 0; 
+   margin: 0 auto; 
+   background-color: #fff; 
+   padding-top: 0.25em;
+   padding-left: 2em; 
+   padding-bottom: 0.5em;}
+
+em {color:deeppink;}
+b {font-weight: bolder; color: deeppink;}
+#container{
+   margin-top: 3em;
+   padding-left: 2em; 
+}
+#buscaHoteles {
+   margin-left: 1em; 
+   background-color: #f5e9f5; 
+   padding: 0.5em 0 0.5em 0;
+   display: none;
+} 
+h1{
+   margin-top:1em; 
+   margin-bottom: 1em;
+   padding: 0.25em;
+   font-size: 120%;
+   font-family: Montserrat; 
+   background-color: #eee;
+}
+h2{font-size: 130%; font-weight: lighter; color: red; }
+ul {list-style-type: circle;}
+
+button {
+   margin-left: 1em;
+   padding-left: 1em;
+   padding-right: 1em;
+   min-width: 10em;
+   height: 2.5em;
+   font-family: Tahoma, Verdana, Geneva, sans-serif;
+   font-size: 75%;
+   background-color:#fff;
+   color: deeppink;
+   cursor: pointer;
+   border: solid 1px; 
+}
+.nero{background-color: #000; border-color: #000; color: #fff;}
+
+.nombreCampo {display: inline-block; width: 15em; color: gray;}
 
