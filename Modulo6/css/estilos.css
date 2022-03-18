@@ -1,1 +1,83 @@
+body {
+   font-family: sans-serif, Arial, Helvetica; 
+   margin-left: 5em;}
 
+h1{font-family: Montserrat; 
+   color:#00008b; 
+   font-size: 130%;}
+
+h2{
+   color:#8b0000; 
+   font-weight: 100; 
+   font-size: 110%;}
+
+h4 {
+   font-family: Montserrat; 
+   color:#154360;
+   text-decoration: underline;
+   font-size: 115%;
+}
+p {margin-bottom: 0.5px;}
+
+#enunciado {
+   background-color: #eee; 
+   border-color: #000; 
+   padding: 2px 20px 20px 20px; 
+   margin-right: 20em; 
+   font-size: 85%; 
+   color:#00008b; 
+   display:block;}
+
+.ejercicio {margin-left: 2em;}
+
+em {
+   font-family: Georgia, 'Times New Roman', Times, serif; 
+   color: rgb(5, 5, 182);
+}
+
+code {
+   font-size: 120%; 
+   font-weight: bolder;
+   color: cadetblue;
+}
+
+ol.letras {
+   list-style-type: lower-latin;
+}
+
+input[type=number] {
+   width: 4em;
+   text-align: center;
+   background-color: #EBF5FB;
+}
+
+.btn {
+   width:80px;
+   height:60px;
+   font-size: 120%;
+}
+
+.eq {
+   width:164px;
+
+}
+.bn{
+   background:#638cb5;   
+}
+.bo{
+   background:yellow;   
+}
+.bpto{
+   background:#87bcf1;   
+}
+.caja {
+   display: inline-block;
+   width:75px;
+   height:40px;
+   font-size: 115%;
+   text-align: center;   
+}
+.bordea{
+   border: #000 solid 1px;
+   padding: 0.5em;
+}
