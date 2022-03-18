@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M5 Extra 1</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1>Ejercicio M5 Extra 1</h1>
+      <div id="enunciado">
+			<p>L de asteriscos.</p>
+		</div>
+      <div class="ejercicio">
+			<h2>Adivinar número entre 1 y 500</h2>
+			<p>Escribe un número entre 1 y 500: <input id='numero' type='number' value='6'/></p>
+			<p><input class="boton" id="boton" type='button' Value=' Adivinar ' onClick='mostrar()'/></p>
+			<h1 style="line-height: 1em;"  id="resultado"></h1>
+
+		</div>
+		<!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+		<script>
+         const NUMERO_RANDOM = Math.ceil((Math.random() * 500));
+         console.log("Número random: ", NUMERO_RANDOM);
+
+         function mostrar() {
+				let numUsuario = parseInt(document.getElementById("numero").value);
+				if (numUsuario ==='' || numUsuario === null || isNaN(numUsuario) || numUsuario<1 || numUsuario>500 ) {
+					document.getElementById("resultado").innerHTML="Escriba un número entero entre 1 y 10";
+				} else {
+               let texto = "";
+               let resultado = NUMERO_RANDOM - numUsuario;
+               console.log("Resultado (" + resultado +") es igual a "+ NUMERO_RANDOM + "-"+ numUsuario);
+               if (resultado >50 ) {
+                  texto = ("Frío, frío tu número es menor al mío");
+               } else if (resultado>15 && resultado <=50) {
+                  texto =  ("Tibio, tibio tu número es menor al mío");
+               } else if (resultado>1 && resultado <=15) {			
+                  texto =  ("Caliente, caliente tu número es menor al mío");
+               } else if (resultado == 0) {			
+                  texto = ("Has ganado!");
+                  document.getElementById("boton").style.display="none";
+               } else if (resultado<-1 && resultado >=-15) {			
+                  texto = ("Caliente, caliente tu número es mayor al mío");
+               } else if (resultado<-15 && resultado >=-50) {			
+                  texto = ("Tibio, tibio tu número es mayor al mío");
+               } else if (resultado<-50) {			
+                  texto = ("Caliente, caliente tu número es mayor al mío");
+               }
+               document.getElementById("resultado").innerHTML = texto;
+            }
+				
+			}
+		</script>
+	</body>
+</html>
