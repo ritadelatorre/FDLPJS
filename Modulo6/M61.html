@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="./css/estilos.css" rel="stylesheet">
+   <title>Ejercicio M6.1</title>
+</head>
+<body>
+   <h1>Ejercicio M6.1. Calculadora Arcaica</h1>
+   <hr>
+   <div class="ejercicio">
+      <div id="calculadora">
+         <h2>
+            <span class="bordea">
+               <span class="caja" id="numero1" title="operando1"></span>
+               <span class="caja" id="operador" title="operador"></span> 
+               <span class="caja" id="numero2" title="operando2"></span>=
+               <strong><span class="caja" id="resultado"></span></strong>
+            </span>
+         </h2>
+         <p>
+            <input class="btn" id="btnC" type='button' Value='C' title="reiniciar..." onClick='reiniciar()'/>
+            <input class="btn" id="btnCE" type='button' Value='CE' title="borrar último" onClick='borrarUltimo()'/>
+            <input class="btn bo" id="bp" type='button' Value='mod' onClick='operacion("%")'/>
+            <input class="btn bo" id="bd" type='button' Value='/'  onClick='operacion("/")'/>
+         </p>
+         <p>
+            <input class="btn bn" id="b7" type='button' Value='7' onClick='llenaValores("7")'/>
+            <input class="btn bn" id="b8" type='button' Value='8' onClick='llenaValores("8")'/>
+            <input class="btn bn" id="b9" type='button' Value='9' onClick='llenaValores("9")'/>
+            <input class="btn bo" id="bm" type='button' Value='*' onClick='operacion("*")'/>
+         </p>
+         <p>
+            <input class="btn bn" id="b4" type='button' Value='4' onClick='llenaValores("4")'/>
+            <input class="btn bn" id="b5" type='button' Value='5' onClick='llenaValores("5")'/>
+            <input class="btn bn" id="b6" type='button' Value='6' onClick='llenaValores("6")'/>
+            <input class="btn bo" id="br" type='button' Value='-' onClick='operacion("-")'/>
+         </p>
+         <p>
+            <input class="btn bn" id="b1" type='button' Value='1' onClick='llenaValores("1")'/>
+            <input class="btn bn" id="b2" type='button' Value='2' onClick='llenaValores("2")'/>
+            <input class="btn bn" id="b3" type='button' Value='3' onClick='llenaValores("3")'/>
+            <input class="btn bo" id="bs" type='button' Value='+' onClick='operacion("+")'/>
+         </p>
+         <p>
+            <input class="btn bn" id="b0" type='button' Value='0' onClick='llenaValores("0")'/>
+            <input class="btn bpto" id="bPto" type='button' Value='.' onClick='puntoDecimal()'/>
+            <input class="btn eq" id="bc" type='button' disabled Value='=' onClick='calcular()'/>
+         </p>
+      </div>
+   </div>
+   <script>
+         let simbolo;
+
+         function suma(operando1, operando2) {
+            return operando1 + operando2;
+         }
+         
+         function resta(operando1, operando2) {
+            return operando1 - operando2;
+         }
+         
+         function multiplica(operando1, operando2) {
+            return operando1 * operando2;
+         }
+
+         function divide(operando1, operando2) {
+            if (operando2 === 0) {
+               alert("ERROR: No se puede dividir por 0");
+               return 0;
+            } else {
+               return operando1 / operando2;
+            }
+         }
+         
+         function resto(operando1, operando2) {
+            if (operando2 === 0) {
+               alert("ERROR: No se puede dividir por 0");
+               return 0;
+            } else {
+               return operando1 % operando2;
+            }
+         }
+
+         function calcular(){
+            let operando1 = Number(document.getElementById('numero1').innerHTML);
+            let operando2 = Number(document.getElementById('numero2').innerHTML);
+            let operador = document.getElementById('operador').innerHTML
+            let resultado = 0;
+               
+
+            switch (operador) {
+               case "+": resultado = suma(operando1, operando2); break;
+               case "-": resultado = resta(operando1, operando2); break;
+               case "*": resultado = multiplica(operando1, operando2); break;
+               case "/": resultado = divide(operando1, operando2); break;
+               case "%": resultado = resto(operando1, operando2); break;
+            }
+            document.getElementById('resultado').innerHTML=resultado;
+            document.getElementById('bc').disabled = true;
+            document.getElementById('btnCE').disabled = true;
+         } 
+         
+         function llenaValores(numero){
+            let valor;
+            simbolo = document.getElementById('operador').innerHTML;
+            //alert(simbolo);
+            if (simbolo==""){
+               valor = document.getElementById('numero1').innerHTML; 
+               valor += numero;
+               valor = Number(valor);
+               document.getElementById('numero1').innerHTML = valor;
+            } else {
+               valor = document.getElementById('numero2').innerHTML;
+               valor += numero;
+               valor = Number(valor);
+               document.getElementById('numero2').innerHTML = valor;
+               document.getElementById('bc').disabled = false;
+            } 
+         }
+         
+         function operacion(simbol) {
+            simbolo = simbol;
+            document.getElementById('operador').innerHTML = simbolo;
+         }
+
+         function puntoDecimal() {
+
+            let operando, valor, agregarPunto, contenido;
+            contenido = document.getElementById('operador').innerHTML;
+            if (contenido == "") {
+               valor = document.getElementById('numero1').innerHTML;
+               operando = 1;
+            } else {
+               valor = document.getElementById('numero2').innerHTML;
+               operando = 2;
+            }
+            agregarPunto = valor.includes(".");
+            console.log(valor, operando);
+            
+            if (!agregarPunto){
+               valor = (valor == "") ? "0." : valor += ".";
+               if (operando == 1) {
+                  document.getElementById('numero1').innerHTML = valor;
+               } else {
+                  document.getElementById('numero2').innerHTML = valor;
+               }
+            }
+
+         }
+         
+         function reiniciar() {
+            document.getElementById('numero1').innerHTML ='';
+            document.getElementById('numero2').innerHTML ='';
+            document.getElementById('operador').innerHTML ='';
+            document.getElementById('resultado').innerHTML ='';
+            document.getElementById('bc').disabled = true;
+            document.getElementById('btnCE').disabled = false ;
+         }
+         
+         function borrarUltimo() {
+            if (simbolo == "") {
+               document.getElementById('numero1').innerHTML ='';
+               document.getElementById('bc').disabled = true;
+            } else {
+               document.getElementById('numero2').innerHTML ='';
+               document.getElementById('bc').disabled = true;
+            }
+         }
+   </script>
+</body>
+</html>

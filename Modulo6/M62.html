@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M6.2</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <!--Esto es HTML-->
+      <h1><input type="button" id="b1" value="-" onClick='desplegar("b1", "enunciado")'/> Ejercicio M6.2</h1>
+      <div id="enunciado">
+            <p>Aquest programa calcula l'edat mitjana d'un número de persones introduït per teclat.</p>
+            <p>S'ha de crear una funció que s'encarregui de demanar les edats a l'usuari i de calcular l'edat mitjana.</p>
+            <ul>                  
+                  <li>La funció rebrà per paràmetre el nº de persones a qui ha de demanar l'edat.</li>
+                  <li>L'edat de les persones només serà vàlida si està compresa entre 0 i 120 anys.</li>
+                  <li>La mitjana de les edats introduïdes s'ha de retornar per la funció (return).</li>
+            </ul>      
+      </div>
+      <div class="ejercicio">
+            <h2>Cálculo del promedio de edad</h2>
+            <p>¿A cuántas personas deseas calcular la edad?&nbsp; <input id="numEdades" type="number"/></p>
+            <p><input id="btn" type='button' Value='Calcular promedio' title="Iniciar..." onClick='main()'/></p>
+            <h3 id="resultado"></h3> 
+            <p id="contador"></p> 
+            <ul id="edades">
+            </ul> 
+      </div>
+      <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script>
+         "use strict"; //Obligamos a definir las variables
+//---------------------------------------------------------------------------------------	
+	function PromedioEdad(numero) {
+		let promedio = 0;
+		let contador = 1;
+		let edad = 0;
+		let sumaEdades = 0;
+		
+            document.getElementById('contador').innerHTML += "Personas solicitadas:<br><br>Edades: " + numero;
+            
+		do {
+			edad = Number(prompt("Indica la edad de la persona " + contador + ": ", ""));
+			if (edad < 0 || edad > 120) {
+				alert("La edad debe estar entre 0 y 120 años");
+			} else {
+				sumaEdades = sumaEdades + edad;
+				contador++;
+                        document.getElementById('edades').innerHTML += "<li>" + edad + "</li>" ;
+			}
+		} while (contador <= numero);
+		
+		console.log("contador " + contador);		
+		console.log("sumaEdades " + sumaEdades);
+		
+		promedio= (sumaEdades/numero).toFixed(2);
+		return promedio;
+	}
+
+      function main() {
+		let numPersonas, resultado;
+		numPersonas = parseInt(document.getElementById('numEdades').value);
+
+            if (isNaN(numPersonas) || numPersonas == "" || numPersonas <= 1) {
+                  alert("Introduzca un número de edades mayor a uno");
+            } else {
+      		resultado = PromedioEdad(numPersonas);
+		      document.getElementById('resultado').innerHTML="El promedio de la edad es de " + resultado + " años";
+                  document.getElementById('btn').disabled = true;
+            }
+	}
+
+         function desplegar(desde, parte){
+            let quien = document.getElementById(desde).value;
+
+            if (quien=='-') {
+                  document.getElementById(parte).style.display = 'none';
+                  document.getElementById(desde).value = '+';
+            } else {
+                  document.getElementById(parte).style.display = 'block';
+                  document.getElementById(desde).value = '-';
+            }
+         }
+      </script>
+    </body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ejercicio M6-Extra 1</title>
+      <meta charset='utf-8'>
+      <link href="./css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+      <div id="content">
+            <!--Esto es HTML-->
+            <h1><input type="button" id="b1" value="+" onClick='desplegar("b1", "enunciado")'/> Ejercicio M6 Extra1</h1>
+            <div id="enunciado" style="display: none">
+                  <p>Fes un programa amb 3 funcions. El programa ha de cridar a les 3 funcions e interactuar amb ells de la següent manera:</p>
+                  <ol class="letras">
+                        <li>Crea una funció <strong>sense paràmetres i sense retorn</strong> que imprimeixi per pantalla <em>"Sóc una funció"</em>.<br>
+                              <blockquote>Sortida: <em>Sóc una funció</em></blockquote>
+                        </li>
+                        
+                        <li>Crea una funció que rebi <strong>un array de números com a paràmetre</strong>, imprimeixi el número més gran per pantalla i <strong>retorni</strong> <span style="color: red;">l’índex</span> de l’array on es troba el número més petit. Crea un array de 5 números i crida a la funció que acabes de crear per imprimir el número més petit de l’array.
+                              <blockquote>
+                              Sortida (amb aquests números dintre de l’array "8, 12, 5, 22, 6")
+                              <ul>
+                                    <li><em>Número més gran 22</em>  (això ho imprimeix la propia funciò)</li>
+                                    <li><em>Número més petit 5</em>  (això ho imprimeix on s'ha fet la crida de la funciò)</li>
+                              </ul>
+                              </blockquote> 
+                        </li>
+                        <li>Crea una funció que <strong>rebi</strong> dos números com a paràmetres i <strong>retorni un array</strong> amb tots els números compresos entre ells.
+                        Crida a la funció que acabes de crear amb els dos números que vulguis i imprimeix l’array que et retorna.
+                              <blockquote>
+                              Sortida (amb el núm 2 i 10):<br>
+                              <ul><li><em>Els números compresos entre 2 i 10 són: 3, 4, 5, 6, 7, 8, 9</em></li></ul>
+                              </blockquote> 
+                  </ol>     
+            </div>
+            <div class="ejercicio">
+                  <h3>Solución</h3>
+                  <p>Llena los <em>'inputs'</em> con valores numéricos y pulsa el botón <em>'Ejecutar'</em> para ejecutar las funciones.</p>
+                  <p><input type='button' Value='Ejecutar' onClick='validar()'/></p>
+                  <h4>Resultado a.</h4>
+                  <em><p id="solucionA"></p></em>
+                  <h4>Resultado b.</h4>
+                  <p>Llene los siguientes campos con números. Se mostrará el valor mínimo y máximo:</p>
+                  <p>
+                        <input id="n1" type="number"/>
+                        <input type="number" id="n2" value="12"/>
+                        <input type="number" id="n3" value="5"/>
+                        <input type="number" id="n4" value="22"/>
+                        <input type="number" id="n5" value="6"/>
+                  </p>
+                  <em><p id="solucionB1"></p>
+                  <p><span id="solucionB21"></span><span id="solucionB22"></span></p></em>
+                  <h4>Resultado c.</h4>
+                  <p>Mostrar los números entre <input type="number" id="desde" value="2"/>
+                     y <input type="number" id="hasta" value="10"/></p>
+                  <em><p id="solucionC"></p></em>
+
+            </div>
+      </div>
+            <!--Acá pasaremos a JavaScript (con la instrucción SCRIPT)--> 
+      <script>
+         "use strict"; //Obligamos a definir las variables
+
+            function quienSoy() {
+                  document.getElementById('solucionA').innerHTML="Soy una función";
+            }
+	
+            function arrayMin(numeros) {
+                  let numeroMinimo = Number(numeros[0]);
+                  let numeroMaximo = Number(numeros[0]);
+                  let indexMinimo = 0;
+                  let largo = numeros.length;
+                  //document.getElementById('arrayB').innerHTML= "Números: " + numeros;
+                  let elemento = 0;
+                  
+                  for (let i = 0 ; i < largo; i++) {
+                        elemento = Number(numeros[i]);
+                        if (elemento < numeroMinimo) {
+                              numeroMinimo = elemento;
+                              indexMinimo = i;
+                        }
+                        if (elemento > numeroMaximo) {
+                              numeroMaximo = elemento;
+                        }
+                  }				
+                  document.getElementById('solucionB1').innerHTML = "Número más grande <b>" + numeroMaximo + "</b>";
+                  return indexMinimo;
+            }
+	
+            function llenaArray(desde, hasta) {
+                  let numerosD=[];
+                  
+                  for (let i = desde+1; i<hasta; i++) {
+                        numerosD.push(i);
+                  }
+                  return numerosD;
+            }      
+
+            function main() {
+
+                  let numerosD = [];
+                  let indicePetit=0;
+                  
+                  //punto a.
+                  quienSoy();
+
+                  //punto b.
+                  let numeros = [];	
+                   
+                  numeros.push(Number(document.getElementById('n1').value)); 
+                  numeros.push(Number(document.getElementById('n2').value)); 
+                  numeros.push(Number(document.getElementById('n3').value)); 
+                  numeros.push(Number(document.getElementById('n4').value)); 
+                  numeros.push(Number(document.getElementById('n5').value)); 
+
+                  indicePetit = arrayMin(numeros);
+                  
+                  document.getElementById('solucionB21').innerHTML= "Número más pequeño <b>" + numeros[indicePetit] + "</b>";
+                  document.getElementById('solucionB22').innerHTML= ". Está en la posición <b>" + indicePetit + "</b>.";
+                  
+                  //punto c.             
+                  let desde = Number(document.getElementById('desde').value);
+                  let hasta = Number(document.getElementById('hasta').value);
+                  let mensaje="Los números comprendidos entre <b>" + desde + "</b> i <b>" + hasta + "</b> son: <b>"
+                  mensaje+= llenaArray(desde, hasta) + "</b>";
+                  document.getElementById('solucionC').innerHTML= mensaje;
+                  
+            } // fin main
+
+            function validar() {
+                  let validado = true;
+                  let msgError = "Los campos en rojo tienen información incorrecta!\n"
+                  msgError += "Corrija los valores y presione de nuevo el botón 'Ejecutar'"
+
+                  if (document.getElementById("n1").value.length==0) {
+                        validado = false;
+                        document.getElementById("n1").style.backgroundColor="#F1948A";   
+                  } else {
+                        document.getElementById("n1").style.backgroundColor="#EBF5FB";
+                  }
+                  // abortar si todo no está validado
+                  if (!validado) {
+                        alert(msgError);
+                  } else {
+                        main();
+                  }
+                  
+            }
+
+
+
+         function desplegar(desde, parte){
+            let quien = document.getElementById(desde).value;
+
+            if (quien=='-') {
+                  document.getElementById(parte).style.display = 'none';
+                  document.getElementById(desde).value = '+';
+            } else {
+                  document.getElementById(parte).style.display = 'block';
+                  document.getElementById(desde).value = '-';
+            }
+         }
+      </script>
+    </body>
+</html>
